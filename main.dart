@@ -1,8 +1,16 @@
 main(List<String> args) {
-  String hello(String str1, String str2, [String str3 = " !"]) {
-    return str1 + str2 + str3;
-  }
-  // the type is the return type of the func
+  int foo = 6;
 
-  print(hello("hello", " world"));
+  if (foo > 5) {
+    print("wow");
+  }
+
+  foo = 5;
+
+  switch (foo) {
+    case 5:
+      print("hello");
+      break;
+    default:
+  }
 }
