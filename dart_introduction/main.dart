@@ -1,17 +1,17 @@
 import "dart:async";
 
-void main(List<String> args) {
-  Future<String> f = Future<String>.delayed(Duration(seconds: 3), () {
-    // return "finish";
-    throw Exception("big error");
-  });
+Future getData() {
+  // return Future.value('I am a data');
+  throw Exception("error");
+}
 
-  // Works as with promises
-  f.then((res) {
-    print(res); //finish
-  }).catchError((err) {
-    print(err); // big error
-  });
+void main(List<String> args) async {
+  try {
+    var data = await getData();
+    print(data); // 'I am a data'
+  } catch (err) {
+    print(err); // Exception: error
+  }
 
 //will be executed in first
   print("hello");
