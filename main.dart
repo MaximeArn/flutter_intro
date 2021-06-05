@@ -1,17 +1,44 @@
-class Tesla {
-  String model;
-  bool isAbbleToFly = false;
+class Human {
+  String sex;
+  int eys = 2;
+  int mouse = 1;
 
-  Tesla({required this.model}) {}
-  Tesla.plane({required this.model, this.isAbbleToFly = true}) {}
+  Human({required this.sex}) {}
+
+  void speak() {
+    print("hello I am an Human");
+  }
+}
+
+class User extends Human {
+  String name;
+  String password;
+  String get cryptedPassword {
+    return (this.password + " crypted");
+  }
+
+  User({required String this.name, required String this.password})
+      : super(sex: "male") {}
+
+@override
+  void speak() {
+    print("hello I am a user  !");
+  }
+
+  static void speakFrench() {
+    print("bonjour toi !");
+  }
 }
 
 main(List<String> args) {
-  Tesla model3 = Tesla(
-    model: "model3",
-  );
-  print(model3.isAbbleToFly);
+  User john = User(name: "john", password: "12345");
 
-  Tesla modelPlane = Tesla.plane(model: "styled");
-  print(modelPlane.isAbbleToFly);
+  print(john.cryptedPassword);
+  john.speak();
+
+  //herited property
+  print(john.eys);
+
+  //static method
+  User.speakFrench();
 }
