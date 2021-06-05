@@ -1,16 +1,25 @@
 main(List<String> args) {
-  int foo = 6;
+  int count = 10;
 
-  if (foo > 5) {
-    print("wow");
+  for (var i = 0; i < count; i++) {
+    print(i);
   }
 
-  foo = 5;
-
-  switch (foo) {
-    case 5:
-      print("hello");
-      break;
-    default:
+  count = 0;
+  while (count < 10) {
+    print(count);
+    count++;
   }
+
+  count = 0;
+  do {
+    count++;
+    print(count);
+  } while (count < 10);
+
+  // ternaire
+
+  int five = 5;
+  bool isEqual5 = five == 5 ? true : false;
+  print(isEqual5);
 }
