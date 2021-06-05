@@ -1,25 +1,17 @@
+class Tesla {
+  String model;
+  bool isAbbleToFly = false;
+
+  Tesla({required this.model}) {}
+  Tesla.plane({required this.model, this.isAbbleToFly = true}) {}
+}
+
 main(List<String> args) {
-  int count = 10;
+  Tesla model3 = Tesla(
+    model: "model3",
+  );
+  print(model3.isAbbleToFly);
 
-  for (var i = 0; i < count; i++) {
-    print(i);
-  }
-
-  count = 0;
-  while (count < 10) {
-    print(count);
-    count++;
-  }
-
-  count = 0;
-  do {
-    count++;
-    print(count);
-  } while (count < 10);
-
-  // ternaire
-
-  int five = 5;
-  bool isEqual5 = five == 5 ? true : false;
-  print(isEqual5);
+  Tesla modelPlane = Tesla.plane(model: "styled");
+  print(modelPlane.isAbbleToFly);
 }
