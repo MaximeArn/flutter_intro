@@ -1,10 +1,8 @@
-main() {
-  Map<String, Object> pet = {"name": "john", "age": 25};
-  print(pet);
-  print(pet.length);
-  print(pet["name"]);
-  print(pet.keys);
-  print(pet.values);
-  print(pet.entries);
-  pet["color"] = "blue";
+main(List<String> args) {
+  String hello(String str1, String str2, [String str3 = " !"]) {
+    return str1 + str2 + str3;
+  }
+  // the type is the return type of the func
+
+  print(hello("hello", " world"));
 }
