@@ -1,24 +1,18 @@
-//only import a part of a file
-import 'User.dart' show User;
+import "dart:async";
 
-// native dart package
-import 'dart:math';
+void main(List<String> args) {
+  Future<String> f = Future<String>.delayed(Duration(seconds: 3), () {
+    // return "finish";
+    throw Exception("big error");
+  });
 
-main(List<String> args) {
-  User<String> john =
-      User(name: "john", password: "12345", preferedType: "strings");
+  // Works as with promises
+  f.then((res) {
+    print(res); //finish
+  }).catchError((err) {
+    print(err); // big error
+  });
 
-  print(john.cryptedPassword);
-  john.speak();
-
-  //generic typed prop
-  print(john.preferedType.runtimeType); //String
-
-  //herited property
-  print(john.eys);
-
-  //static method
-  User.speakFrench();
-
-  print(pi);
+//will be executed in first
+  print("hello");
 }
