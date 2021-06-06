@@ -8,14 +8,28 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Text("CooKing", 
-        textDirection: TextDirection.ltr,
+        child: Text.rich(
+          TextSpan(
+            children: [
+              TextSpan(
+                text: "Coo"
+              ),
+              TextSpan(
+                text: "K",
+                style: TextStyle(
+                  color: Color.fromRGBO(255,215,0,1),
+                ),
+              ),
+              TextSpan(
+                text: "ing"
+              )
+            ]),
+          textDirection: TextDirection.ltr,
         style: TextStyle(
          fontSize: 50,
-         color: Color(0xfce5cdff),
          fontWeight: FontWeight.w500
         ),
-      )
-    );
+            )
+        );
   }
 }
