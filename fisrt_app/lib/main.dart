@@ -14,25 +14,17 @@ class MyApp extends StatelessWidget {
       children: <Widget>[
         Container(color: Colors.red, height: 100, width: 100),
         Expanded(
-            child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          textDirection: TextDirection.ltr,
+            child: Stack(
           children: [
             Container(
-              color: Colors.green.shade200,
-              width: 50,
+              color: Colors.red,
             ),
-            Expanded(
-              child: Container(
-                color: Colors.green.shade300,
-                width: 100,
-              ),
-            ),
-            Container(
-              color: Colors.green.shade400,
-              width: 50,
-            ),
+            Text(
+              "hello",
+              textDirection: TextDirection.ltr,
+            )
           ],
+          alignment: Alignment.center,
         )),
         Expanded(
           child: Container(color: Colors.blue, height: 100, width: 100),
