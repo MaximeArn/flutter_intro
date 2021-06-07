@@ -12,29 +12,32 @@ class MyApp extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: <Widget>[
-        Container(
-          color: Colors.red,
-         height: 100,
-          width: 100
-        ),
+        Container(color: Colors.red, height: 100, width: 100),
         Expanded(
-          child: Container(
-            color: Colors.green,
-            width: 100
-          ),
+            child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          textDirection: TextDirection.ltr,
+          children: [
+            Container(
+              color: Colors.green.shade200,
+              width: 50,
+            ),
+            Expanded(
+              child: Container(
+                color: Colors.green.shade300,
+                width: 100,
+              ),
+            ),
+            Container(
+              color: Colors.green.shade400,
+              width: 50,
+            ),
+          ],
+        )),
+        Expanded(
+          child: Container(color: Colors.blue, height: 100, width: 100),
         ),
-        Expanded(child: 
-        Container(
-          color: Colors.blue,
-          height: 100,
-          width: 100
-        ),
-        ),
-        Container(
-          color: Colors.yellow,
-         height: 100,
-          width: 100
-        )
+        Container(color: Colors.yellow, height: 100, width: 100)
       ],
     );
   }
