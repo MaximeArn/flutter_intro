@@ -14,26 +14,26 @@ class MyApp extends StatelessWidget {
       children: <Widget>[
         Container(
           color: Colors.red,
-         height: 150,
-          width: 150
+         height: 100,
+          width: 100
         ),
         Expanded(
           child: Container(
             color: Colors.green,
-            width: 150
+            width: 100
           ),
         ),
         Expanded(child: 
         Container(
           color: Colors.blue,
-          height: 150,
-          width: 150
+          height: 100,
+          width: 100
         ),
         ),
         Container(
           color: Colors.yellow,
-         height: 150,
-          width: 150
+         height: 100,
+          width: 100
         )
       ],
     );
