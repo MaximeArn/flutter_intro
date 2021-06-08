@@ -1,7 +1,20 @@
-import 'package:fisrt_app/city_card.dart';
+import 'package:widgets_tests/city_card.dart';
 import 'package:flutter/material.dart';
 
-class Home extends StatelessWidget {
+class Home extends StatefulWidget {
+  @override
+  _HomeState createState() {
+    return _HomeState();
+  }
+}
+
+class _HomeState extends State<Home> {
+  List cities = [
+    {"image": "assets/images/rio.jpeg", "name": "Rio"},
+    {"image": "assets/images/bangkok.jpeg", "name": "Bangkok"},
+    {"image": "assets/images/paris.jpeg", "name": "Paris"}
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -14,9 +27,8 @@ class Home extends StatelessWidget {
           padding: EdgeInsets.all(10),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              CityCard(),
-              CityCard(),
+            children: <CityCard>[
+              ...cities.map((city) => CityCard(name: city["name"], image: city["image"]))
             ],
           )),
     );
