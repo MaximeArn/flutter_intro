@@ -31,16 +31,28 @@ class MyApp extends StatelessWidget {
         drawer: Drawer(
             child: Column(
           children: [
+            Row(
+              children: [
+                Expanded(
+                  child: DrawerHeader(
+                    child: Center(child: Text("Menu")),
+                    decoration:
+                        BoxDecoration(color: Color.fromRGBO(250, 215, 0, 1)),
+                  ),
+                ),
+              ],
+            ),
             Padding(
-              padding: EdgeInsets.fromLTRB(50, 100, 0, 20),
+              padding: EdgeInsets.only(left: 50, bottom: 30),
               child: Row(
                 children: [Icon(Icons.supervised_user_circle), Text("Profile")],
               ),
             ),
-            Padding(padding: EdgeInsets.only(left: 50), child: 
-            Row(
-              children: [Icon(Icons.subway_rounded), Text("subway")],
-            ), 
+            Padding(
+              padding: EdgeInsets.only(left: 50),
+              child: Row(
+                children: [Icon(Icons.subway_rounded), Text("subway")],
+              ),
             )
           ],
         )),
