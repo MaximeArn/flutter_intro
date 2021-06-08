@@ -12,12 +12,12 @@ class MyApp extends StatelessWidget {
       home: Scaffold(
         appBar: AppBar(title: Text("CooKing")),
         body: Container(
-          alignment: Alignment.center,
-          child: Text(
-            "hello world",
-            style: TextStyle(fontSize: 50, color: Colors.yellow),
-          ),
-        ),
+            alignment: Alignment.center,
+            child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+              TextButton(onPressed: () {}, child: Text("I am a button ")),
+              ElevatedButton(
+                  onPressed: () {}, child: Text("I am an elevated button "))
+            ])),
         bottomNavigationBar: BottomNavigationBar(
           type: BottomNavigationBarType.fixed,
           selectedItemColor: Colors.yellow,
@@ -45,7 +45,7 @@ class MyApp extends StatelessWidget {
               ],
             ),
             Padding(
-              padding: EdgeInsets.only(left: 50, bottom: 30),
+              padding: EdgeInsets.only(left: 50, bottom: 30, top: 30),
               child: Row(
                 children: [Icon(Icons.supervised_user_circle), Text("Profile")],
               ),
@@ -58,6 +58,11 @@ class MyApp extends StatelessWidget {
             )
           ],
         )),
+        floatingActionButton: FloatingActionButton(
+          child: Icon(Icons.add),
+          onPressed: () {},
+        ),
+        floatingActionButtonLocation: FloatingActionButtonLocation.startFloat,
       ),
       theme: ThemeData(primarySwatch: Colors.yellow),
     );
