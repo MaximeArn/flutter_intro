@@ -10,22 +10,25 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: "homepage",
       home: Scaffold(
+        appBar: AppBar(title: Text("CooKing")),
         body: Container(
           alignment: Alignment.center,
           child: Text(
             "hello world",
-            style:
-                TextStyle(fontSize: 50, color: Color.fromRGBO(250, 215, 0, 1)),
+            style: TextStyle(fontSize: 50, color: Colors.yellow),
           ),
         ),
         bottomNavigationBar: BottomNavigationBar(
-          selectedItemColor: Color.fromRGBO(250, 215, 0, 1),
+          type: BottomNavigationBarType.fixed,
+          selectedItemColor: Colors.yellow,
           items: [
-            BottomNavigationBarItem(icon: Icon(Icons.touch_app), label: "star"),
+            BottomNavigationBarItem(icon: Icon(Icons.touch_app), label: "vote"),
             BottomNavigationBarItem(
-                icon: Icon(Icons.restaurant), label: "home"),
+                icon: Icon(Icons.shopping_cart), label: "rewards"),
             BottomNavigationBarItem(
-                icon: Icon(Icons.star_rate), label: "rewards"),
+                icon: Icon(Icons.restaurant), label: "post"),
+            BottomNavigationBarItem(icon: Icon(Icons.star), label: "ranking"),
+            BottomNavigationBarItem(icon: Icon(Icons.home), label: "profile"),
           ],
         ),
         drawer: Drawer(
@@ -36,8 +39,7 @@ class MyApp extends StatelessWidget {
                 Expanded(
                   child: DrawerHeader(
                     child: Center(child: Text("Menu")),
-                    decoration:
-                        BoxDecoration(color: Color.fromRGBO(250, 215, 0, 1)),
+                    decoration: BoxDecoration(color: Colors.yellow),
                   ),
                 ),
               ],
@@ -57,7 +59,7 @@ class MyApp extends StatelessWidget {
           ],
         )),
       ),
-      theme: ThemeData(primarySwatch: Colors.blue),
+      theme: ThemeData(primarySwatch: Colors.yellow),
     );
   }
 }
