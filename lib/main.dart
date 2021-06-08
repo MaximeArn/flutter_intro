@@ -17,8 +17,22 @@ class TravelApp extends StatelessWidget {
           actions: <Widget>[Icon(Icons.more_vert)],
         ),
         body: Container(
-          child: Text("travel"),
-        ),
+            padding: EdgeInsets.all(10),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Card(
+                  elevation: 10,
+                  child: Container(
+                    child: Stack(
+                      fit: StackFit.expand,
+                      children: [Image.asset("assets/images/rio.jpeg", fit: BoxFit.cover,)],
+                    ),
+                    height: 200,
+                  ),
+                )
+              ],
+            )),
       ),
     );
   }
