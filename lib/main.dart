@@ -26,7 +26,38 @@ class TravelApp extends StatelessWidget {
                   child: Container(
                     child: Stack(
                       fit: StackFit.expand,
-                      children: [Image.asset("assets/images/rio.jpeg", fit: BoxFit.cover,)],
+                      children: [
+                        Image.asset(
+                          "assets/images/rio.jpeg",
+                          fit: BoxFit.cover,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Column(
+                            children: <Widget>[
+                              Expanded(
+                                child: Row(
+                                  children: [
+                                    Icon(Icons.star_border,
+                                        size: 40, color: Colors.white),
+                                  ],
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                ),
+                              ),
+                              Row(
+                                children: [
+                                  Text(
+                                    "Paris",
+                                    style: TextStyle(
+                                        color: Colors.white, fontSize: 25),
+                                  )
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
                     ),
                     height: 200,
                   ),
