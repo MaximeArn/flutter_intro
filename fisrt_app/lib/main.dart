@@ -32,14 +32,16 @@ class MyApp extends StatelessWidget {
             child: Column(
           children: [
             Padding(
-              padding: EdgeInsets.all(50),
+              padding: EdgeInsets.fromLTRB(50, 100, 0, 20),
               child: Row(
                 children: [Icon(Icons.supervised_user_circle), Text("Profile")],
               ),
             ),
+            Padding(padding: EdgeInsets.only(left: 50), child: 
             Row(
               children: [Icon(Icons.subway_rounded), Text("subway")],
-            ),
+            ), 
+            )
           ],
         )),
       ),
