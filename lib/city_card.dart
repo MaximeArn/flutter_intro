@@ -4,8 +4,14 @@ class CityCard extends StatelessWidget {
   final String name;
   final String image;
   final bool checked;
+  final VoidCallback toggleChecked;
 
-  CityCard({required this.name, required this.image, this.checked = false});
+  CityCard({
+    required this.name,
+    required this.image,
+    this.checked = false,
+    required this.toggleChecked,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -21,9 +27,7 @@ class CityCard extends StatelessWidget {
                 image,
               ),
               child: InkWell(
-                onTap: () {
-                print("${name} card taped");
-              }
+                onTap: toggleChecked
               ),
             ),
             Padding(
@@ -33,7 +37,8 @@ class CityCard extends StatelessWidget {
                   Expanded(
                     child: Row(
                       children: [
-                        Icon(Icons.star_border, size: 40, color: Colors.white),
+                        Icon(checked ? Icons.star : Icons.star_border,
+                            size: 40, color: Colors.white),
                       ],
                       mainAxisAlignment: MainAxisAlignment.end,
                       crossAxisAlignment: CrossAxisAlignment.start,

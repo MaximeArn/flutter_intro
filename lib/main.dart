@@ -9,7 +9,6 @@ class TravelApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        //disable horrible banner ^^
         debugShowCheckedModeBanner: false,
         home: Home());
   }
