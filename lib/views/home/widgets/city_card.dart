@@ -16,6 +16,7 @@ class CityCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
+      margin: EdgeInsets.only(bottom: 30),
       elevation: 10,
       child: Container(
         child: Stack(
@@ -26,9 +27,7 @@ class CityCard extends StatelessWidget {
               image: AssetImage(
                 image,
               ),
-              child: InkWell(
-                onTap: toggleChecked
-              ),
+              child: InkWell(onTap: toggleChecked),
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),

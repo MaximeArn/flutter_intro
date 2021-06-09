@@ -1,4 +1,4 @@
-import 'package:widgets_tests/city_card.dart';
+import 'package:widgets_tests/views/home/widgets/city_card.dart';
 import 'package:flutter/material.dart';
 
 class Home extends StatefulWidget {
@@ -16,7 +16,17 @@ class _HomeState extends State<Home> {
       "name": "Bangkok",
       "checked": false
     },
-    {"image": "assets/images/paris.jpeg", "name": "Paris", "checked": false}
+    {"image": "assets/images/paris.jpeg", "name": "Paris", "checked": false},
+    {
+      "image": "assets/images/new_york.jpeg",
+      "name": "New-York",
+      "checked": false
+    },
+    {
+      "image": "assets/images/melbourne.jpeg",
+      "name": "Melbourne",
+      "checked": false
+    }
   ];
 
   void toggleChecked(city) {
