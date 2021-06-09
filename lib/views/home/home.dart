@@ -10,20 +10,24 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   List cities = [
-    {"image": "assets/images/rio.jpeg", "name": "Rio", "checked": false},
+    {"image": "assets/images/cities/rio.jpeg", "name": "Rio", "checked": false},
     {
-      "image": "assets/images/bangkok.jpeg",
+      "image": "assets/images/cities/bangkok.jpeg",
       "name": "Bangkok",
       "checked": false
     },
-    {"image": "assets/images/paris.jpeg", "name": "Paris", "checked": false},
     {
-      "image": "assets/images/new_york.jpeg",
+      "image": "assets/images/cities/paris.jpeg",
+      "name": "Paris",
+      "checked": false
+    },
+    {
+      "image": "assets/images/cities/new_york.jpeg",
       "name": "New-York",
       "checked": false
     },
     {
-      "image": "assets/images/melbourne.jpeg",
+      "image": "assets/images/cities/melbourne.jpeg",
       "name": "Melbourne",
       "checked": false
     }

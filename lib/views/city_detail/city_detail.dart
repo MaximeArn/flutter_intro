@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:widgets_tests/models/Activity.type.dart';
+import 'package:widgets_tests/views/city_detail/widgets/activity_card.dart';
+import '../../data/data.dart' as data;
 
 class CityDetail extends StatefulWidget {
-  final List<Activity> activities = [
-    Activity(name: "Paris", image: "image", id: "id", city: "city")
-  ];
+  final List<Activity> activities = data.activities;
 
   @override
   _CityDetailState createState() => _CityDetailState();
@@ -22,7 +22,11 @@ class _CityDetailState extends State<CityDetail> {
           ]),
       body: Container(
         padding: EdgeInsets.symmetric(vertical: 30, horizontal: 15),
-        child: Text("hello"),
+        child: Column(
+          children: widget.activities
+              .map((Activity activity) => ActivityCard(activity: activity))
+              .toList(),
+        ),
       ),
     );
   }
