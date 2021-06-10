@@ -26,7 +26,13 @@ class _CityDetailState extends State<CityDetail> {
           itemBuilder: (context, index) =>
               ActivityCard(activity: widget.activities[index]),
           separatorBuilder: (context, index) {
-            return Divider(color: Colors.black54,indent: 100, endIndent: 100, height: 40, thickness: 1.3,);
+            return Divider(
+              color: Colors.black54,
+              indent: 100,
+              endIndent: 100,
+              height: 40,
+              thickness: 1.3,
+            );
           },
           itemCount: widget.activities.length,
         ),
