@@ -9,10 +9,12 @@ class ActivityCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(bottom: 25),
       height: 250,
       width: double.infinity,
-      child: Image.asset(activity.image, fit: BoxFit.cover,),
+      child: Image.asset(
+        activity.image,
+        fit: BoxFit.cover,
+      ),
     );
   }
 }
