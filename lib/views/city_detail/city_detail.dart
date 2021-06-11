@@ -3,6 +3,7 @@ import 'package:widgets_tests/models/activity.type.dart';
 import 'package:widgets_tests/models/trip.type.dart';
 import 'package:widgets_tests/views/city_detail/widgets/activities_list.dart';
 import 'package:widgets_tests/views/city_detail/widgets/activity_card.dart';
+import 'package:widgets_tests/views/city_detail/widgets/booked_activities.dart';
 import 'package:widgets_tests/views/city_detail/widgets/trip_overview.dart';
 import '../../data/data.dart' as data;
 
@@ -15,7 +16,8 @@ class CityDetail extends StatefulWidget {
 
 class _CityDetailState extends State<CityDetail> {
   Trip myTrip = Trip(activities: [], city: "Paris", date: DateTime.now());
-
+  int index = 0;
+  
   void setDate() {
     showDatePicker(
             context: context,
@@ -28,6 +30,12 @@ class _CityDetailState extends State<CityDetail> {
           myTrip.date = date;
         });
       }
+    });
+  }
+
+  void changeIndex(newIndex) {
+    setState(() {
+      index = newIndex;
     });
   }
 
@@ -44,15 +52,27 @@ class _CityDetailState extends State<CityDetail> {
         child: Column(
           children: [
             TripOverview(myTrip: myTrip, setDate: setDate),
-            Expanded(child: ActivitiesList(activities: widget.activities)),
+            Expanded(
+                child: index == 0
+                    ? ActivitiesList(activities: widget.activities)
+                    : BookedActivities()),
           ],
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
         items: [
           BottomNavigationBarItem(icon: Icon(Icons.map), label: "discovery"),
-          BottomNavigationBarItem(icon: Icon(Icons.stars), label: "booking"),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.stars),
+            label: "booking",
+          )
         ],
+        onTap: (newIndex) {
+          setState(() {
+            changeIndex(newIndex);
+          });
+        },
+        currentIndex: index,
       ),
     );
   }
