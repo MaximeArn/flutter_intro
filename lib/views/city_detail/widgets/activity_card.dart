@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:widgets_tests/models/Activity.type.dart';
+import 'package:widgets_tests/models/activity.type.dart';
 
 class ActivityCard extends StatelessWidget {
   final Activity activity;
@@ -8,18 +8,12 @@ class ActivityCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      child: ListTile(
-        leading: CircleAvatar(backgroundImage: AssetImage(activity.image),),
-        title: Text(activity.name),
-        subtitle: Text(activity.city),
-        trailing: Checkbox(
-          value: false,
-          tristate: false,
-          onChanged: (value) {
-            print(value);
-          },
-        ),
+    return Container(
+      height: 250,
+      width: double.infinity,
+      child: Image.asset(
+        activity.image,
+        fit: BoxFit.cover,
       ),
     );
   }

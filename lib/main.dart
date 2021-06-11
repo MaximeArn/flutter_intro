@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:widgets_tests/views/city_detail/city_detail.dart';
-// import 'views/home/home.dart';
 
 void main() {
   runApp(TravelApp());
