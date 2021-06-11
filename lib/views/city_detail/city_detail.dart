@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:widgets_tests/models/activity.type.dart';
 import 'package:widgets_tests/models/trip.type.dart';
 import 'package:widgets_tests/views/city_detail/widgets/activity_card.dart';
@@ -12,7 +13,7 @@ class CityDetail extends StatefulWidget {
 }
 
 class _CityDetailState extends State<CityDetail> {
-  Trip myTrip = Trip(activities: [], city: "Paris", date: DateTime(2020));
+  Trip myTrip = Trip(activities: [], city: "Paris", date: DateTime.now());
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +35,7 @@ class _CityDetailState extends State<CityDetail> {
                   children: <Widget>[
                     Row(
                       children: <Widget>[
-                        Expanded(child: Text("Choose a date ")),
+                        Expanded(child: Text(DateFormat("d/M/y").format(myTrip.date))),
                         ElevatedButton(
                           child: Text("Selectionnez une date "),
                           onPressed: () {},
