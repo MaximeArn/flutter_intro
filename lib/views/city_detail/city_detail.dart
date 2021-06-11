@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import 'package:widgets_tests/models/activity.type.dart';
 import 'package:widgets_tests/models/trip.type.dart';
+import 'package:widgets_tests/views/city_detail/widgets/activities_list.dart';
 import 'package:widgets_tests/views/city_detail/widgets/activity_card.dart';
+import 'package:widgets_tests/views/city_detail/widgets/trip_overview.dart';
 import '../../data/data.dart' as data;
 
 class CityDetail extends StatefulWidget {
@@ -23,7 +24,9 @@ class _CityDetailState extends State<CityDetail> {
             lastDate: DateTime(2023))
         .then((date) {
       if (date != null) {
-        print(date);
+        setState(() {
+          myTrip.date = date;
+        });
       }
     });
   }
@@ -31,47 +34,26 @@ class _CityDetailState extends State<CityDetail> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-            leading: Icon(Icons.chevron_left),
-            title: Text("Paris"),
-            actions: <Widget>[
-              Icon(Icons.more_vert),
-            ]),
-        body: Container(
-          child: Column(
-            children: [
-              Container(
-                padding: EdgeInsets.all(10),
-                height: 150,
-                color: Colors.white,
-                child: Column(
-                  children: <Widget>[
-                    Row(
-                      children: <Widget>[
-                        Expanded(
-                            child:
-                                Text(DateFormat("d/M/y").format(myTrip.date))),
-                        ElevatedButton(
-                          child: Text("Selectionnez une date "),
-                          onPressed: setDate,
-                        )
-                      ],
-                    )
-                  ],
-                ),
-              ),
-              Expanded(
-                child: GridView.count(
-                    mainAxisSpacing: 1,
-                    crossAxisSpacing: 1,
-                    crossAxisCount: 2,
-                    children: widget.activities
-                        .map((Activity activity) =>
-                            ActivityCard(activity: activity))
-                        .toList()),
-              ),
-            ],
-          ),
-        ));
+      appBar: AppBar(
+          leading: Icon(Icons.chevron_left),
+          title: Text("Organize your trip"),
+          actions: <Widget>[
+            Icon(Icons.more_vert),
+          ]),
+      body: Container(
+        child: Column(
+          children: [
+            TripOverview(myTrip: myTrip, setDate: setDate),
+            Expanded(child: ActivitiesList(activities: widget.activities)),
+          ],
+        ),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: [
+          BottomNavigationBarItem(icon: Icon(Icons.map), label: "discovery"),
+          BottomNavigationBarItem(icon: Icon(Icons.stars), label: "booking"),
+        ],
+      ),
+    );
   }
 }
