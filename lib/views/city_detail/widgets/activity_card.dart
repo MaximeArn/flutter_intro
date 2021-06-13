@@ -35,18 +35,33 @@ class ActivityCard extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
-                      if (isSelected) Icon(Icons.check, color: Colors.white, size: 40,),
+                      if (isSelected)
+                        Icon(
+                          Icons.check,
+                          color: Colors.white,
+                          size: 40,
+                        ),
                     ],
                   ),
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      activity.name,
-                      style: TextStyle(color: Colors.white, fontSize: 20),
-                    )
-                  ],
+                Padding(
+                  padding: const EdgeInsets.all(10),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Flexible(
+                        child: FittedBox(
+                          child: Text(
+                            activity.name,
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 20,
+                                backgroundColor: Color.fromRGBO(0, 0, 0, 0.1)),
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
                 )
               ],
             ),

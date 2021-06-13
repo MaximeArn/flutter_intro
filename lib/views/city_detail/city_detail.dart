@@ -17,6 +17,12 @@ class _CityDetailState extends State<CityDetail> {
   late Trip myTrip;
   late int index;
 
+  List<Activity> get bookedActivities {
+    return widget.activities
+        .where((activity) => myTrip.activities.contains(activity.id))
+        .toList();
+  }
+
   void setDate() {
     showDatePicker(
             context: context,
@@ -47,9 +53,9 @@ class _CityDetailState extends State<CityDetail> {
 
   void toggleActivity(String id) {
     setState(() {
-    myTrip.activities.contains(id)
-        ? myTrip.activities.remove(id)
-        : myTrip.activities.add(id);   
+      myTrip.activities.contains(id)
+          ? myTrip.activities.remove(id)
+          : myTrip.activities.add(id);
     });
   }
 
