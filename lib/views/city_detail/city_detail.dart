@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:widgets_tests/models/activity.type.dart';
 import 'package:widgets_tests/models/trip.type.dart';
 import 'package:widgets_tests/views/city_detail/widgets/activities_list.dart';
-import 'package:widgets_tests/views/city_detail/widgets/activity_card.dart';
 import 'package:widgets_tests/views/city_detail/widgets/booked_activities.dart';
 import 'package:widgets_tests/views/city_detail/widgets/trip_overview.dart';
 import '../../data/data.dart' as data;
@@ -15,9 +14,9 @@ class CityDetail extends StatefulWidget {
 }
 
 class _CityDetailState extends State<CityDetail> {
-  Trip myTrip = Trip(activities: [], city: "Paris", date: DateTime.now());
-  int index = 0;
-  
+  late Trip myTrip;
+  late int index;
+
   void setDate() {
     showDatePicker(
             context: context,
@@ -33,10 +32,23 @@ class _CityDetailState extends State<CityDetail> {
     });
   }
 
+  @override
+  void initState() {
+    myTrip = Trip(activities: [], city: "Paris", date: DateTime.now());
+    index = 0;
+    super.initState();
+  }
+
   void changeIndex(newIndex) {
     setState(() {
       index = newIndex;
     });
+  }
+
+  void toggleActivity(String id) {
+    myTrip.activities.contains(id)
+        ? myTrip.activities.remove(id)
+        : myTrip.activities.add(id);
   }
 
   @override
@@ -54,7 +66,7 @@ class _CityDetailState extends State<CityDetail> {
             TripOverview(myTrip: myTrip, setDate: setDate),
             Expanded(
                 child: index == 0
-                    ? ActivitiesList(activities: widget.activities)
+                    ? ActivitiesList(activities: widget.activities, toggleActivity: toggleActivity,)
                     : BookedActivities()),
           ],
         ),
