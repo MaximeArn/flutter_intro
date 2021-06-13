@@ -59,6 +59,12 @@ class _CityDetailState extends State<CityDetail> {
     });
   }
 
+  void unBookActivity(String id) {
+    setState(() {
+    myTrip.activities.remove(id);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -79,7 +85,10 @@ class _CityDetailState extends State<CityDetail> {
                         toggleActivity: toggleActivity,
                         selectedActivities: myTrip.activities,
                       )
-                    : BookedActivities()),
+                    : BookedActivities(
+                        bookedActivities: bookedActivities,
+                        unBookActivity: unBookActivity,
+                      )),
           ],
         ),
       ),
