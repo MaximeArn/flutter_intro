@@ -24,41 +24,41 @@ List<Activity> activities = [
   Activity(
       image: 'assets/images/activities/louvre.jpeg',
       name: 'Le Louvre',
-      id: 'a1',
+      id: 'a5',
       city: 'Paris'),
   Activity(
       image: 'assets/images/activities/butes_chaumont.jpeg',
       name: 'Les buttes Chaumont',
-      id: 'a2',
+      id: 'a6',
       city: 'Paris'),
   Activity(
       image: 'assets/images/activities/notre_dame.jpg',
       name: 'Notre Dame',
-      id: 'a3',
+      id: 'a7',
       city: 'Paris'),
   Activity(
       image: 'assets/images/activities/defense.jpeg',
       name: 'La Défense',
-      id: 'a4',
+      id: 'a8',
       city: 'Paris'),
   Activity(
       image: 'assets/images/activities/louvre.jpeg',
       name: 'Le Louvre',
-      id: 'a1',
+      id: 'a9',
       city: 'Paris'),
   Activity(
       image: 'assets/images/activities/butes_chaumont.jpeg',
       name: 'Les buttes Chaumont',
-      id: 'a2',
+      id: 'a10',
       city: 'Paris'),
   Activity(
       image: 'assets/images/activities/notre_dame.jpg',
       name: 'Notre Dame',
-      id: 'a3',
+      id: 'a11',
       city: 'Paris'),
   Activity(
       image: 'assets/images/activities/defense.jpeg',
       name: 'La Défense',
-      id: 'a4',
+      id: 'a12',
       city: 'Paris'),
 ];

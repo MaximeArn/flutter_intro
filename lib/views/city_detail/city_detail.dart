@@ -66,7 +66,11 @@ class _CityDetailState extends State<CityDetail> {
             TripOverview(myTrip: myTrip, setDate: setDate),
             Expanded(
                 child: index == 0
-                    ? ActivitiesList(activities: widget.activities, toggleActivity: toggleActivity,)
+                    ? ActivitiesList(
+                        activities: widget.activities,
+                        toggleActivity: toggleActivity,
+                        selectedActivities: myTrip.activities,
+                      )
                     : BookedActivities()),
           ],
         ),
