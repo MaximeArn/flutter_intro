@@ -46,9 +46,11 @@ class _CityDetailState extends State<CityDetail> {
   }
 
   void toggleActivity(String id) {
+    setState(() {
     myTrip.activities.contains(id)
         ? myTrip.activities.remove(id)
-        : myTrip.activities.add(id);
+        : myTrip.activities.add(id);   
+    });
   }
 
   @override

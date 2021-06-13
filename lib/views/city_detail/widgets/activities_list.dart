@@ -19,7 +19,12 @@ class ActivitiesList extends StatelessWidget {
         crossAxisSpacing: 1,
         crossAxisCount: 2,
         children: activities
-            .map((Activity activity) => ActivityCard(activity: activity))
+            .map((Activity activity) => ActivityCard(
+                activity: activity,
+                isSelected: selectedActivities.contains(activity.id),
+                toggleActivity: () {
+                  toggleActivity(activity.id);
+                }))
             .toList());
   }
 }
