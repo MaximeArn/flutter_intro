@@ -61,7 +61,7 @@ class _CityDetailState extends State<CityDetail> {
 
   void unBookActivity(String id) {
     setState(() {
-    myTrip.activities.remove(id);
+      myTrip.activities.remove(id);
     });
   }
 

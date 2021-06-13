@@ -28,7 +28,10 @@ class BookedActivities extends StatelessWidget {
                 onPressed: () {
                   unBookActivity(activity.id);
                 },
-                icon: Icon(Icons.delete),
+                icon: Icon(
+                  Icons.delete,
+                  color: Colors.red,
+                ),
               ),
             ),
           );
