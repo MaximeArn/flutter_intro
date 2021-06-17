@@ -9,6 +9,19 @@ void main() {
 class TravelApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(debugShowCheckedModeBanner: false, home: Data(child: CityDetail(),) );
+    return MaterialApp(
+      theme: ThemeData(
+        primarySwatch: Colors.green,
+        textTheme: TextTheme(
+          headline6: TextStyle(
+            color: Colors.orange,
+          ),
+        ),
+      ),
+      debugShowCheckedModeBanner: false,
+      home: Data(
+        child: CityDetail(),
+      ),
+    );
   }
 }

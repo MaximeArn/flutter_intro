@@ -36,7 +36,10 @@ class _BookedActivityCardState extends State<BookedActivityCard> {
         leading: CircleAvatar(
           backgroundImage: AssetImage(widget.activity.image),
         ),
-        title: Text(widget.activity.name),
+        title: Text(
+          widget.activity.name,
+          style: Theme.of(context).textTheme.headline6,
+        ),
         subtitle: Text(
           widget.activity.city,
           style: TextStyle(color: color),

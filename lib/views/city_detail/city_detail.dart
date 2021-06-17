@@ -4,6 +4,7 @@ import 'package:widgets_tests/models/trip.type.dart';
 import 'package:widgets_tests/views/city_detail/widgets/activities_list.dart';
 import 'package:widgets_tests/views/city_detail/widgets/booked_activities.dart';
 import 'package:widgets_tests/views/city_detail/widgets/trip_overview.dart';
+import 'package:widgets_tests/widgets/data.dart';
 import '../../data/data.dart' as data;
 
 class CityDetail extends StatefulWidget {
@@ -16,9 +17,10 @@ class CityDetail extends StatefulWidget {
 class _CityDetailState extends State<CityDetail> {
   late Trip myTrip;
   late int index;
+  late List<Activity> activities;
 
   List<Activity> get bookedActivities {
-    return widget.activities
+    return activities
         .where((activity) => myTrip.activities.contains(activity.id))
         .toList();
   }
@@ -43,6 +45,12 @@ class _CityDetailState extends State<CityDetail> {
     myTrip = Trip(activities: [], city: "Paris", date: DateTime.now());
     index = 0;
     super.initState();
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    activities = Data.of(context).activities;
   }
 
   void changeIndex(newIndex) {
@@ -81,7 +89,7 @@ class _CityDetailState extends State<CityDetail> {
             Expanded(
                 child: index == 0
                     ? ActivitiesList(
-                        activities: widget.activities,
+                        activities: activities,
                         toggleActivity: toggleActivity,
                         selectedActivities: myTrip.activities,
                       )

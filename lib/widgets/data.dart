@@ -11,4 +11,8 @@ class Data extends InheritedWidget {
   bool updateShouldNotify(covariant InheritedWidget oldWidget) {
     return true;
   }
+
+  static of(BuildContext context) {
+    return context.dependOnInheritedWidgetOfExactType<Data>();
+  }
 }
