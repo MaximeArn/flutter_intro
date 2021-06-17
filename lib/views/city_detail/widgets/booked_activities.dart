@@ -1,7 +1,6 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 import 'package:widgets_tests/models/activity.type.dart';
+import 'package:widgets_tests/views/city_detail/widgets/booked_activity_card.dart';
 
 class BookedActivities extends StatelessWidget {
   final List<Activity> bookedActivities;
@@ -13,31 +12,14 @@ class BookedActivities extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 2, vertical: 6),
-      child: ListView.builder(
-        itemBuilder: (context, index) {
-          Activity activity = bookedActivities[index];
-          return Card(
-            child: ListTile(
-              leading: CircleAvatar(
-                backgroundImage: AssetImage(activity.image),
-              ),
-              title: Text(activity.name),
-              subtitle: Text(activity.city),
-              trailing: IconButton(
-                onPressed: () {
-                  unBookActivity(activity.id);
-                },
-                icon: Icon(
-                  Icons.delete,
-                  color: Colors.red,
-                ),
-              ),
-            ),
-          );
-        },
-        itemCount: bookedActivities.length,
-      ),
-    );
+        padding: EdgeInsets.symmetric(horizontal: 2, vertical: 6),
+        child: ListView(
+            children: bookedActivities
+                .map((activity) => BookedActivityCard(
+                      key: ValueKey(activity.id),
+                      activity: activity,
+                      unBookActivity: unBookActivity,
+                    ))
+                .toList()));
   }
 }
