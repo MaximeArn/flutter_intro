@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:widgets_tests/models/activity.type.dart';
 import 'package:widgets_tests/models/trip.type.dart';
 import 'package:widgets_tests/views/city_detail/widgets/activities_list.dart';
@@ -30,7 +31,7 @@ class CityDetail extends StatefulWidget {
   _CityDetailState createState() => _CityDetailState();
 }
 
-class _CityDetailState extends State<CityDetail> {
+class _CityDetailState extends State<CityDetail> with WidgetsBindingObserver {
   late Trip myTrip;
   late int index;
   late List<Activity> activities;
@@ -57,10 +58,23 @@ class _CityDetailState extends State<CityDetail> {
   }
 
   @override
+  void dispose() {
+    super.dispose();
+    WidgetsBinding.instance!.removeObserver(this);
+  }
+
+  @override
   void initState() {
+    WidgetsBinding.instance!.addObserver(this);
     myTrip = Trip(activities: [], city: "Paris", date: DateTime.now());
     index = 0;
     super.initState();
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    super.didChangeAppLifecycleState(state);
+    print(state);
   }
 
   @override
