@@ -10,6 +10,22 @@ import '../../data/data.dart' as data;
 class CityDetail extends StatefulWidget {
   final List<Activity> activities = data.activities;
 
+  Widget showContext(
+      {required BuildContext context, required List<Widget> children}) {
+    Orientation orientation = MediaQuery.of(context).orientation;
+    if (orientation == Orientation.landscape) {
+      return Row(
+        children: children,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+      );
+    } else {
+      return Column(
+        children: children,
+      );
+    }
+    ;
+  }
+
   @override
   _CityDetailState createState() => _CityDetailState();
 }
@@ -83,23 +99,21 @@ class _CityDetailState extends State<CityDetail> {
             Icon(Icons.more_vert),
           ]),
       body: Container(
-        child: Column(
-          children: [
-            TripOverview(myTrip: myTrip, setDate: setDate),
-            Expanded(
-                child: index == 0
-                    ? ActivitiesList(
-                        activities: activities,
-                        toggleActivity: toggleActivity,
-                        selectedActivities: myTrip.activities,
-                      )
-                    : BookedActivities(
-                        bookedActivities: bookedActivities,
-                        unBookActivity: unBookActivity,
-                      )),
-          ],
+          child: widget.showContext(context: context, children: [
+        TripOverview(myTrip: myTrip, setDate: setDate),
+        Expanded(
+          child: index == 0
+              ? ActivitiesList(
+                  activities: activities,
+                  toggleActivity: toggleActivity,
+                  selectedActivities: myTrip.activities,
+                )
+              : BookedActivities(
+                  bookedActivities: bookedActivities,
+                  unBookActivity: unBookActivity,
+                ),
         ),
-      ),
+      ])),
       bottomNavigationBar: BottomNavigationBar(
         items: [
           BottomNavigationBarItem(icon: Icon(Icons.map), label: "discovery"),
