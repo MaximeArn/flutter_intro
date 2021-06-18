@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:widgets_tests/models/activity_model.dart';
+import 'package:widgets_tests/models/city_model.dart';
 import 'package:widgets_tests/models/trip_model.dart';
 import 'package:widgets_tests/views/city_detail/widgets/activities_list.dart';
 import 'package:widgets_tests/views/city_detail/widgets/booked_activities.dart';
@@ -99,6 +100,8 @@ class _CityDetailState extends State<CityDetail> with WidgetsBindingObserver {
 
   @override
   Widget build(BuildContext context) {
+    final City city = ModalRoute.of(context)!.settings.arguments as City;
+
     return Scaffold(
       appBar: AppBar(
           leading: Icon(Icons.chevron_left),
@@ -108,7 +111,11 @@ class _CityDetailState extends State<CityDetail> with WidgetsBindingObserver {
           ]),
       body: Container(
           child: widget.showContext(context: context, children: [
-        TripOverview(myTrip: myTrip, setDate: setDate),
+        TripOverview(
+          myTrip: myTrip,
+          setDate: setDate,
+          cityName: city.name,
+        ),
         Expanded(
           child: index == 0
               ? ActivitiesList(

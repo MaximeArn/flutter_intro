@@ -5,12 +5,13 @@ import 'package:widgets_tests/models/trip_model.dart';
 class TripOverview extends StatelessWidget {
   final VoidCallback setDate;
   final Trip myTrip;
+  final String cityName;
 
   double get amount {
     return 0;
   }
 
-  TripOverview({required this.myTrip, required this.setDate});
+  TripOverview({required this.myTrip, required this.setDate, required this.cityName});
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +26,7 @@ class TripOverview extends StatelessWidget {
       child: Column(
         children: <Widget>[
           Text(
-            "Paris",
+            cityName,
             style: TextStyle(
                 fontSize: 25,
                 fontWeight: FontWeight.bold,
