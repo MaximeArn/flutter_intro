@@ -12,10 +12,10 @@ class TravelApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Data(
-        child: CityDetail(),
-      ),
-      // home:Home()
+      // home: Data(
+      //   child: CityDetail(),
+      // ),
+      home:Home()
     );
   }
 }

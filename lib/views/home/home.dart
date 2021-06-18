@@ -34,9 +34,9 @@ class _HomeState extends State<Home> {
       ),
       body: Container(
           padding: EdgeInsets.all(10),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: <CityCard>[...cities.map((city) => CityCard(city: city))],
+          child: ListView.builder(
+            itemCount: cities.length,
+            itemBuilder: (context, index) => CityCard(city: cities[index]),
           )),
     );
   }
