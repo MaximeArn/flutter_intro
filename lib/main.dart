@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:widgets_tests/views/city_detail/city_detail.dart';
-import 'package:widgets_tests/inherited_widgets/data.dart';
 import 'views/home/home.dart';
 
 void main() {
@@ -11,11 +10,8 @@ class TravelApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      // home: Data(
-      //   child: CityDetail(),
-      // ),
-      home:Home()
-    );
+        debugShowCheckedModeBanner: false,
+        // home: CityDetail()
+        home: Home());
   }
 }

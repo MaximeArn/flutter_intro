@@ -5,7 +5,6 @@ import 'package:widgets_tests/models/trip_model.dart';
 import 'package:widgets_tests/views/city_detail/widgets/activities_list.dart';
 import 'package:widgets_tests/views/city_detail/widgets/booked_activities.dart';
 import 'package:widgets_tests/views/city_detail/widgets/trip_overview.dart';
-import 'package:widgets_tests/inherited_widgets/data.dart';
 import '../../data/data.dart' as data;
 
 class CityDetail extends StatefulWidget {
@@ -65,6 +64,7 @@ class _CityDetailState extends State<CityDetail> with WidgetsBindingObserver {
 
   @override
   void initState() {
+    activities = data.activities;
     WidgetsBinding.instance!.addObserver(this);
     myTrip = Trip(activities: [], city: "Paris", date: DateTime.now());
     index = 0;
@@ -75,12 +75,6 @@ class _CityDetailState extends State<CityDetail> with WidgetsBindingObserver {
   void didChangeAppLifecycleState(AppLifecycleState state) {
     super.didChangeAppLifecycleState(state);
     print(state);
-  }
-
-  @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-    activities = Data.of(context).activities;
   }
 
   void changeIndex(newIndex) {
