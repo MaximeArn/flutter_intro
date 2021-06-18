@@ -12,6 +12,10 @@ class TravelApp extends StatelessWidget {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
         // home: CityDetail()
-        home: Home());
+        home: Home(),
+        routes: {
+          "/city" : (BuildContext context) => CityDetail()
+        },
+        );
   }
 }
