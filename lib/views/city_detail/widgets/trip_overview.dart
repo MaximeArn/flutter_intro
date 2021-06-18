@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:widgets_tests/models/trip.type.dart';
+import 'package:widgets_tests/models/trip_model.dart';
 
 class TripOverview extends StatelessWidget {
   final VoidCallback setDate;
@@ -14,15 +14,13 @@ class TripOverview extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     Orientation orientation = MediaQuery.of(context).orientation;
     Size size = MediaQuery.of(context).size;
-
 
     return Container(
       padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
       height: 200,
-      width: orientation == Orientation.landscape ? size.width/2 : size.width,
+      width: orientation == Orientation.landscape ? size.width / 2 : size.width,
       color: Colors.white,
       child: Column(
         children: <Widget>[

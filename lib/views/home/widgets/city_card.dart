@@ -1,17 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:widgets_tests/models/city_model.dart';
 
 class CityCard extends StatelessWidget {
-  final String name;
-  final String image;
-  final bool checked;
-  final VoidCallback toggleChecked;
+  final City city;
 
-  CityCard({
-    required this.name,
-    required this.image,
-    this.checked = false,
-    required this.toggleChecked,
-  });
+  CityCard({required this.city});
 
   @override
   Widget build(BuildContext context) {
@@ -25,33 +18,21 @@ class CityCard extends StatelessWidget {
             Ink.image(
               fit: BoxFit.cover,
               image: AssetImage(
-                image,
+                city.image,
               ),
-              child: InkWell(onTap: toggleChecked),
+              child: InkWell(onTap: () {}),
             ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Column(
-                children: <Widget>[
-                  Expanded(
-                    child: Row(
-                      children: [
-                        Icon(checked ? Icons.star : Icons.star_border,
-                            size: 40, color: Colors.white),
-                      ],
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                    ),
-                  ),
-                  Row(
-                    children: [
-                      Text(
-                        name,
-                        style: TextStyle(color: Colors.white, fontSize: 25),
-                      )
-                    ],
-                  ),
-                ],
+            Positioned(
+              top: 10,
+              left: 10,
+              child: Container(
+                padding:
+                    const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+                color: Colors.black54,
+                child: Text(
+                  city.name,
+                  style: TextStyle(color: Colors.white, fontSize: 35),
+                ),
               ),
             ),
           ],

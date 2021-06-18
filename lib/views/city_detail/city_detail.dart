@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:widgets_tests/models/activity.type.dart';
-import 'package:widgets_tests/models/trip.type.dart';
+import 'package:widgets_tests/models/activity_model.dart';
+import 'package:widgets_tests/models/trip_model.dart';
 import 'package:widgets_tests/views/city_detail/widgets/activities_list.dart';
 import 'package:widgets_tests/views/city_detail/widgets/booked_activities.dart';
 import 'package:widgets_tests/views/city_detail/widgets/trip_overview.dart';

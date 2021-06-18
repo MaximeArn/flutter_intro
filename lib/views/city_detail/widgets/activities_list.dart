@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:widgets_tests/models/activity.type.dart';
+import 'package:widgets_tests/models/activity_model.dart';
 import 'package:widgets_tests/views/city_detail/widgets/activity_card.dart';
 
 class ActivitiesList extends StatelessWidget {

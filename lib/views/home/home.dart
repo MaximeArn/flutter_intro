@@ -1,3 +1,4 @@
+import 'package:widgets_tests/models/city_model.dart';
 import 'package:widgets_tests/views/home/widgets/city_card.dart';
 import 'package:flutter/material.dart';
 
@@ -9,36 +10,19 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  List cities = [
-    {"image": "assets/images/cities/rio.jpeg", "name": "Rio", "checked": false},
-    {
-      "image": "assets/images/cities/bangkok.jpeg",
-      "name": "Bangkok",
-      "checked": false
-    },
-    {
-      "image": "assets/images/cities/paris.jpeg",
-      "name": "Paris",
-      "checked": false
-    },
-    {
-      "image": "assets/images/cities/new_york.jpeg",
-      "name": "New-York",
-      "checked": false
-    },
-    {
-      "image": "assets/images/cities/melbourne.jpeg",
-      "name": "Melbourne",
-      "checked": false
-    }
+  List<City> cities = [
+    City(name: "Rio", image: "assets/images/cities/rio.jpeg"),
+    City(
+      image: "assets/images/cities/bangkok.jpeg",
+      name: "Bangkok",
+    ),
+    City(
+      image: "assets/images/cities/paris.jpeg",
+      name: "Paris",
+    ),
+    City(image: "assets/images/cities/new_york.jpeg", name: " New-York"),
+    City(name: "Malbourne", image: "assets/images/cities/melbourne.jpeg"),
   ];
-
-  void toggleChecked(city) {
-    int index = cities.indexOf(city);
-    setState(() {
-      cities[index]["checked"] = !cities[index]["checked"];
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -52,16 +36,7 @@ class _HomeState extends State<Home> {
           padding: EdgeInsets.all(10),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: <CityCard>[
-              ...cities.map((city) => CityCard(
-                    name: city["name"],
-                    image: city["image"],
-                    checked: city["checked"],
-                    toggleChecked: () {
-                      toggleChecked(city);
-                    },
-                  ))
-            ],
+            children: <CityCard>[...cities.map((city) => CityCard(city: city))],
           )),
     );
   }

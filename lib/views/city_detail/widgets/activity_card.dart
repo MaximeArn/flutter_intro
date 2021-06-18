@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:widgets_tests/models/activity.type.dart';
+import 'package:widgets_tests/models/activity_model.dart';
 
 class ActivityCard extends StatelessWidget {
   final Activity activity;
