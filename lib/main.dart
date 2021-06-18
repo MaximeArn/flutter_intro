@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:widgets_tests/views/city_detail/city_detail.dart';
-import 'package:widgets_tests/widgets/data.dart';
+import 'package:widgets_tests/inherited_widgets/data.dart';
 
 void main() {
   runApp(TravelApp());

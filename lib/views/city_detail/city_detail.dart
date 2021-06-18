@@ -5,7 +5,7 @@ import 'package:widgets_tests/models/trip.type.dart';
 import 'package:widgets_tests/views/city_detail/widgets/activities_list.dart';
 import 'package:widgets_tests/views/city_detail/widgets/booked_activities.dart';
 import 'package:widgets_tests/views/city_detail/widgets/trip_overview.dart';
-import 'package:widgets_tests/widgets/data.dart';
+import 'package:widgets_tests/inherited_widgets/data.dart';
 import '../../data/data.dart' as data;
 
 class CityDetail extends StatefulWidget {
