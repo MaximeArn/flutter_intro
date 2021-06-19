@@ -29,13 +29,13 @@ class CityCard extends StatelessWidget {
                 );
               }),
             ),
-            Positioned(
-              top: 10,
-              left: 10,
-              child: Container(
+               Container(
                 padding:
                     const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
                 color: Colors.black54,
+            child:Positioned(
+              top: 10,
+              left: 10,
                 child: Text(
                   city.name,
                   style: TextStyle(color: Colors.white, fontSize: 35),
