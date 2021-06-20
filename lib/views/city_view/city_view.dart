@@ -9,7 +9,7 @@ import 'package:widgets_tests/views/city_view/widgets/trip_overview.dart';
 import '../../data/data.dart' as data;
 
 class CityView extends StatefulWidget {
-  static String routeName = "/cityDetail";
+  static String routeName = "/city";
   final List<Activity> activities = data.activities;
   final City city;
 

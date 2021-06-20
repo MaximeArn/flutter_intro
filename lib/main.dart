@@ -17,7 +17,7 @@ class TravelApp extends StatelessWidget {
         "/": (BuildContext context) => Home(),
       },
       onGenerateRoute: (RouteSettings settings) {
-        if (settings.name == "/$CityView.routeName") {
+        if (settings.name == CityView.routeName) {
           City city = settings.arguments as City;
           return MaterialPageRoute(
             builder: (BuildContext context) => CityView(city: city),
