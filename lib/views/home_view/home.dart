@@ -1,6 +1,7 @@
 import 'package:widgets_tests/models/city_model.dart';
 import 'package:widgets_tests/views/home_view/widgets/city_card.dart';
 import 'package:flutter/material.dart';
+import 'package:widgets_tests/widgets/ask_modal.dart';
 
 class Home extends StatefulWidget {
   static String routeName = "/";
@@ -25,20 +26,35 @@ class _HomeState extends State<Home> {
     City(name: "Malbourne", image: "assets/images/cities/melbourne.jpeg"),
   ];
 
+  void openModal() {}
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        leading: Icon(Icons.home),
-        title: Text("Travel"),
-        actions: <Widget>[Icon(Icons.more_vert)],
-      ),
-      body: Container(
-          padding: EdgeInsets.all(10),
-          child: ListView.builder(
-            itemCount: cities.length,
-            itemBuilder: (context, index) => CityCard(city: cities[index]),
-          )),
-    );
+        appBar: AppBar(
+          leading: Icon(Icons.home),
+          title: Text("Travel"),
+          actions: <Widget>[Icon(Icons.more_vert)],
+        ),
+        body: Column(
+          children: [
+            ElevatedButton(
+              onPressed: () {
+                askModal(context, "hello");
+              },
+              child: Text("open modal"),
+            ),
+            Expanded(
+              child: Container(
+                padding: EdgeInsets.all(10),
+                child: ListView.builder(
+                  itemCount: cities.length,
+                  itemBuilder: (context, index) =>
+                      CityCard(city: cities[index]),
+                ),
+              ),
+            ),
+          ],
+        ));
   }
 }
