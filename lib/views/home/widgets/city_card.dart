@@ -22,20 +22,15 @@ class CityCard extends StatelessWidget {
                 city.image,
               ),
               child: InkWell(onTap: () {
-                Navigator.pushNamed(
-                  context,
-                  "/city",
-                  arguments: city
-                );
+                Navigator.pushNamed(context, "/city", arguments: city);
               }),
             ),
-               Container(
-                padding:
-                    const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
-                color: Colors.black54,
-            child:Positioned(
+            Positioned(
               top: 10,
               left: 10,
+              child: Container(
+                padding: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+                color: Colors.black54,
                 child: Text(
                   city.name,
                   style: TextStyle(color: Colors.white, fontSize: 35),

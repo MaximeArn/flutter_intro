@@ -11,7 +11,8 @@ class TripOverview extends StatelessWidget {
     return 0;
   }
 
-  TripOverview({required this.myTrip, required this.setDate, required this.cityName});
+  TripOverview(
+      {required this.myTrip, required this.setDate, required this.cityName});
 
   @override
   Widget build(BuildContext context) {
