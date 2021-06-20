@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:widgets_tests/models/activity_model.dart';
-import 'package:widgets_tests/views/city_detail/widgets/booked_activity_card.dart';
+import 'package:widgets_tests/views/city_view/widgets/booked_activity_card.dart';
 
 class BookedActivities extends StatelessWidget {
   final List<Activity> bookedActivities;

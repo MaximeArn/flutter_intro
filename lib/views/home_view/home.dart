@@ -1,8 +1,9 @@
 import 'package:widgets_tests/models/city_model.dart';
-import 'package:widgets_tests/views/home/widgets/city_card.dart';
+import 'package:widgets_tests/views/home_view/widgets/city_card.dart';
 import 'package:flutter/material.dart';
 
 class Home extends StatefulWidget {
+  static String routeName = "/";
   @override
   _HomeState createState() {
     return _HomeState();

@@ -3,16 +3,17 @@ import 'package:flutter/widgets.dart';
 import 'package:widgets_tests/models/activity_model.dart';
 import 'package:widgets_tests/models/city_model.dart';
 import 'package:widgets_tests/models/trip_model.dart';
-import 'package:widgets_tests/views/city_detail/widgets/activities_list.dart';
-import 'package:widgets_tests/views/city_detail/widgets/booked_activities.dart';
-import 'package:widgets_tests/views/city_detail/widgets/trip_overview.dart';
+import 'package:widgets_tests/views/city_view/widgets/activities_list.dart';
+import 'package:widgets_tests/views/city_view/widgets/booked_activities.dart';
+import 'package:widgets_tests/views/city_view/widgets/trip_overview.dart';
 import '../../data/data.dart' as data;
 
-class CityDetail extends StatefulWidget {
+class CityView extends StatefulWidget {
+  static String routeName = "/cityDetail";
   final List<Activity> activities = data.activities;
   final City city;
 
-  CityDetail({required this.city});
+  CityView({required this.city});
 
   Widget showContext(
       {required BuildContext context, required List<Widget> children}) {
@@ -30,10 +31,10 @@ class CityDetail extends StatefulWidget {
   }
 
   @override
-  _CityDetailState createState() => _CityDetailState();
+  _CityViewState createState() => _CityViewState();
 }
 
-class _CityDetailState extends State<CityDetail> with WidgetsBindingObserver {
+class _CityViewState extends State<CityView> with WidgetsBindingObserver {
   late Trip myTrip;
   late int index;
   late List<Activity> activities;

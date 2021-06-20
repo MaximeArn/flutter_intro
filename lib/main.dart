@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:widgets_tests/views/404/not_found.dart';
-import 'package:widgets_tests/views/city_detail/city_detail.dart';
+import 'package:widgets_tests/views/404_view/not_found.dart';
+import 'package:widgets_tests/views/city_view/city_view.dart';
 import 'models/city_model.dart';
-import 'views/home/home.dart';
+import 'views/home_view/home.dart';
 
 void main() {
   runApp(TravelApp());
@@ -17,10 +17,10 @@ class TravelApp extends StatelessWidget {
         "/": (BuildContext context) => Home(),
       },
       onGenerateRoute: (RouteSettings settings) {
-        if (settings.name == "/city") {
+        if (settings.name == "/$CityView.routeName") {
           City city = settings.arguments as City;
           return MaterialPageRoute(
-            builder: (BuildContext context) => CityDetail(city: city),
+            builder: (BuildContext context) => CityView(city: city),
           );
         }
       },

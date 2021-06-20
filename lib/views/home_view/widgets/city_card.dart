@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:widgets_tests/models/city_model.dart';
+import 'package:widgets_tests/views/city_view/city_view.dart';
 
 class CityCard extends StatelessWidget {
   final City city;
@@ -22,7 +23,7 @@ class CityCard extends StatelessWidget {
                 city.image,
               ),
               child: InkWell(onTap: () {
-                Navigator.pushNamed(context, "/unknownRoute");
+                Navigator.pushNamed(context, "/${CityView.routeName}", arguments: city);
               }),
             ),
             Positioned(
