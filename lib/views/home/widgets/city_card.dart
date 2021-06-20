@@ -22,7 +22,7 @@ class CityCard extends StatelessWidget {
                 city.image,
               ),
               child: InkWell(onTap: () {
-                Navigator.pushNamed(context, "/city", arguments: city);
+                Navigator.pushNamed(context, "/unknownRoute");
               }),
             ),
             Positioned(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:widgets_tests/views/404/not_found.dart';
 import 'package:widgets_tests/views/city_detail/city_detail.dart';
 import 'models/city_model.dart';
 import 'views/home/home.dart';
@@ -22,6 +23,11 @@ class TravelApp extends StatelessWidget {
             builder: (BuildContext context) => CityDetail(city: city),
           );
         }
+      },
+      onUnknownRoute: (RouteSettings settings) {
+        return MaterialPageRoute(
+          builder: (BuildContext context) => NotFound(),
+        );
       },
     );
   }
