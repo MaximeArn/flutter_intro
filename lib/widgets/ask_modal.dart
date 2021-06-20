@@ -34,8 +34,12 @@ class AskModal extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  ElevatedButton(onPressed: () {}, child: Text("Ok")),
-                  ElevatedButton(onPressed: () {}, child: Text("Cancel"))
+                  ElevatedButton(
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                      child: Text("Ok")),
+                  ElevatedButton(onPressed: () { Navigator.pop(context);}, child: Text("Cancel"))
                 ],
               )
             ],
