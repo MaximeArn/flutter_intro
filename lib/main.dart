@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:widgets_tests/views/city_detail/city_detail.dart';
+import 'models/city_model.dart';
 import 'views/home/home.dart';
 
 void main() {
@@ -13,7 +14,14 @@ class TravelApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       routes: {
         "/": (BuildContext context) => Home(),
-        "/city": (BuildContext context) => CityDetail()
+      },
+      onGenerateRoute: (RouteSettings settings) {
+        if (settings.name == "/city") {
+          City city = settings.arguments as City;
+          return MaterialPageRoute(
+            builder: (BuildContext context) => CityDetail(city: city),
+          );
+        }
       },
     );
   }

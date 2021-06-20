@@ -10,6 +10,9 @@ import '../../data/data.dart' as data;
 
 class CityDetail extends StatefulWidget {
   final List<Activity> activities = data.activities;
+  final City city;
+
+  CityDetail({required this.city});
 
   Widget showContext(
       {required BuildContext context, required List<Widget> children}) {
@@ -24,7 +27,6 @@ class CityDetail extends StatefulWidget {
         children: children,
       );
     }
-    ;
   }
 
   @override
@@ -67,7 +69,7 @@ class _CityDetailState extends State<CityDetail> with WidgetsBindingObserver {
   void initState() {
     activities = data.activities;
     WidgetsBinding.instance!.addObserver(this);
-    myTrip = Trip(activities: [], city: "Paris", date: DateTime.now());
+    myTrip = Trip(activities: [], city: widget.city.name, date: DateTime.now());
     index = 0;
     super.initState();
   }
@@ -100,8 +102,6 @@ class _CityDetailState extends State<CityDetail> with WidgetsBindingObserver {
 
   @override
   Widget build(BuildContext context) {
-    final City city = ModalRoute.of(context)!.settings.arguments as City;
-
     return Scaffold(
       appBar: AppBar(
           leading: Icon(Icons.chevron_left),
@@ -114,7 +114,7 @@ class _CityDetailState extends State<CityDetail> with WidgetsBindingObserver {
         TripOverview(
           myTrip: myTrip,
           setDate: setDate,
-          cityName: city.name,
+          cityName: widget.city.name,
         ),
         Expanded(
           child: index == 0
