@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 
-void Function(BuildContext, String) askModal =
-    (BuildContext context, String question) {
-  Navigator.push(
+Future<dynamic> askModal(BuildContext context, String question) {
+  return Navigator.push(
     context,
     PageRouteBuilder(
-        opaque: false,
-        pageBuilder: (BuildContext contex, _, __) => AskModal(
-              question: question,
-            )),
+      opaque: false,
+      pageBuilder: (BuildContext contex, _, __) => AskModal(
+        question: question,
+      ),
+    ),
   );
-};
+}
 
 class AskModal extends StatelessWidget {
   final String question;
@@ -36,10 +36,14 @@ class AskModal extends StatelessWidget {
                 children: [
                   ElevatedButton(
                       onPressed: () {
-                        Navigator.pop(context);
+                        Navigator.pop(context, "ok");
                       },
                       child: Text("Ok")),
-                  ElevatedButton(onPressed: () { Navigator.pop(context);}, child: Text("Cancel"))
+                  ElevatedButton(
+                      onPressed: () {
+                        Navigator.pop(context, "cancel");
+                      },
+                      child: Text("Cancel"))
                 ],
               )
             ],

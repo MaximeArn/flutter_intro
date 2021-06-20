@@ -26,7 +26,11 @@ class _HomeState extends State<Home> {
     City(name: "Malbourne", image: "assets/images/cities/melbourne.jpeg"),
   ];
 
-  void openModal() {}
+  void openModal(BuildContext context) {
+    askModal(context, "hello").then((res) {
+      print(res);
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +44,7 @@ class _HomeState extends State<Home> {
           children: [
             ElevatedButton(
               onPressed: () {
-                askModal(context, "hello");
+                openModal(context);
               },
               child: Text("open modal"),
             ),
