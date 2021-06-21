@@ -3,15 +3,15 @@ import 'package:widgets_tests/views/home_view/widgets/city_card.dart';
 import 'package:flutter/material.dart';
 import 'package:widgets_tests/widgets/ask_modal.dart';
 
-class Home extends StatefulWidget {
+class HomeView extends StatefulWidget {
   static String routeName = "/";
   @override
-  _HomeState createState() {
-    return _HomeState();
+  _HomeViewState createState() {
+    return _HomeViewState();
   }
 }
 
-class _HomeState extends State<Home> {
+class _HomeViewState extends State<HomeView> {
   List<City> cities = [
     City(name: "Rio", image: "assets/images/cities/rio.jpeg"),
     City(

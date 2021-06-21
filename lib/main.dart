@@ -14,7 +14,7 @@ class TravelApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       routes: {
-        "/": (BuildContext context) => Home(),
+        "/": (BuildContext context) => HomeView(),
       },
       onGenerateRoute: (RouteSettings settings) {
         if (settings.name == CityView.routeName) {
