@@ -102,7 +102,7 @@ class _CityViewState extends State<CityView> {
     bool confirmed = await showDialog(
         context: context,
         builder: (BuildContext context) {
-          return ConfirmationModal();
+          return ConfirmationModal(snackBarMessage: "Trip well saved !",);
         });
     if (confirmed) {
       widget.addTrip(myTrip);

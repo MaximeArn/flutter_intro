@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 
 class ConfirmationModal extends StatelessWidget {
+  final String snackBarMessage;
+
+  ConfirmationModal({required this.snackBarMessage});
+
   @override
   Widget build(BuildContext context) {
     return SimpleDialog(
@@ -24,6 +28,12 @@ class ConfirmationModal extends StatelessWidget {
             ElevatedButton(
               onPressed: () {
                 Navigator.pop(context, true);
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text(snackBarMessage, textAlign: TextAlign.center,),
+                    backgroundColor: Colors.green,
+                  ),
+                );
               },
               child: Text("Yes"),
             ),
