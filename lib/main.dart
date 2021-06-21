@@ -23,7 +23,14 @@ class _TravelAppState extends State<TravelApp> {
 
   @override
   void initState() {
-    trips = [];
+    trips = [
+      Trip(activities: [], city: "Prague", date: DateTime.now().add(Duration(days: 10),),),
+      Trip(activities: [], city: "Amsterdam", date: DateTime.now().add(Duration(days: 20),),),
+      Trip(activities: [], city: "Bruxelle", date: DateTime.now().add(Duration(days: 30),),),
+      Trip(activities: [], city: "Paris", date: DateTime.now().subtract(Duration(days: 10),),),
+      Trip(activities: [], city: "Barcelona", date: DateTime.now().subtract(Duration(days: 20),),),
+      Trip(activities: [], city: "Madrid", date: DateTime.now().subtract(Duration(days: 30),),),
+    ];
     super.initState();
   }
 

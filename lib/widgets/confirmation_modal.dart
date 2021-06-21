@@ -30,7 +30,10 @@ class ConfirmationModal extends StatelessWidget {
                 Navigator.pop(context, true);
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(
-                    content: Text(snackBarMessage, textAlign: TextAlign.center,),
+                    content: Text(
+                      snackBarMessage,
+                      textAlign: TextAlign.center,
+                    ),
                     backgroundColor: Colors.green,
                   ),
                 );
