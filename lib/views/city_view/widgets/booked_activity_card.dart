@@ -35,8 +35,16 @@ class _BookedActivityCardState extends State<BookedActivityCard> {
         trailing: IconButton(
           onPressed: () {
             widget.unBookActivity(widget.activity.id);
-            ScaffoldMessenger.of(context)
-                .showSnackBar(SnackBar(content: Text("activity well deleted", textAlign: TextAlign.center,), backgroundColor: Colors.red,duration: Duration(seconds: 2),),);
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Text(
+                  "activity well deleted",
+                  textAlign: TextAlign.center,
+                ),
+                backgroundColor: Colors.red,
+                duration: Duration(seconds: 2),
+              ),
+            );
           },
           icon: Icon(
             Icons.delete,

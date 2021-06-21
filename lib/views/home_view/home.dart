@@ -1,6 +1,7 @@
 import 'package:widgets_tests/models/city_model.dart';
 import 'package:widgets_tests/views/home_view/widgets/city_card.dart';
 import 'package:flutter/material.dart';
+import 'package:widgets_tests/views/home_view/widgets/home_drawer.dart';
 import 'package:widgets_tests/widgets/ask_modal.dart';
 
 class HomeView extends StatefulWidget {
@@ -36,10 +37,10 @@ class _HomeViewState extends State<HomeView> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          leading: Icon(Icons.home),
           title: Text("Travel"),
           actions: <Widget>[Icon(Icons.more_vert)],
         ),
+        drawer: HomeDrawer(),
         body: Column(
           children: [
             ElevatedButton(
