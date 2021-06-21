@@ -31,11 +31,12 @@ class CityCard extends StatelessWidget {
               top: 10,
               left: 10,
               child: Container(
-                padding: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+                padding:
+                    const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
                 color: Colors.black54,
                 child: Text(
                   city.name,
-                  style: TextStyle(color: Colors.white, fontSize: 35),
+                  style: const TextStyle(color: Colors.white, fontSize: 35),
                 ),
               ),
             ),

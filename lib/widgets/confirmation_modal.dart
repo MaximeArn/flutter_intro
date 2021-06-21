@@ -8,8 +8,8 @@ class ConfirmationModal extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SimpleDialog(
-      contentPadding: EdgeInsets.all(25),
-      title: Text(
+      contentPadding: const EdgeInsets.all(25),
+      title: const Text(
         "Save this trip ?",
         textAlign: TextAlign.center,
       ),
@@ -21,7 +21,7 @@ class ConfirmationModal extends StatelessWidget {
               onPressed: () {
                 Navigator.pop(context, false);
               },
-              child: Text(
+              child: const Text(
                 "No",
               ),
             ),
@@ -38,7 +38,7 @@ class ConfirmationModal extends StatelessWidget {
                   ),
                 );
               },
-              child: Text("Yes"),
+              child: const Text("Yes"),
             ),
           ],
         )

@@ -12,7 +12,7 @@ class BookedActivities extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        padding: EdgeInsets.symmetric(horizontal: 2, vertical: 6),
+        padding: const EdgeInsets.symmetric(horizontal: 2, vertical: 6),
         child: ListView(
             children: bookedActivities
                 .map((activity) => BookedActivityCard(

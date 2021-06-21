@@ -20,12 +20,12 @@ class _HomeViewState extends State<HomeView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Travel"),
-        actions: <Widget>[Icon(Icons.more_vert)],
+        title: const Text("Travel"),
+        actions: <Widget>[const Icon(Icons.more_vert)],
       ),
-      drawer: MainDrawer(),
+      drawer: const MainDrawer(),
       body: Container(
-        padding: EdgeInsets.all(10),
+        padding: const EdgeInsets.all(10),
         child: ListView.builder(
           itemCount: widget.cities.length,
           itemBuilder: (context, index) => CityCard(city: widget.cities[index]),

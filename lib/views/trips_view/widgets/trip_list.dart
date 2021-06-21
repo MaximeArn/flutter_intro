@@ -17,8 +17,9 @@ class TripList extends StatelessWidget {
           title: Text(trip.city),
           subtitle: Text(
             DateFormat("d/M/y").format(trip.date),
+            style: const TextStyle(letterSpacing: 1.1),
           ),
-          trailing: Icon(Icons.info),
+          trailing: const Icon(Icons.info),
         );
       },
     );

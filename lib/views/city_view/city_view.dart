@@ -121,7 +121,7 @@ class _CityViewState extends State<CityView> {
           Icon(Icons.more_vert),
         ],
       ),
-      drawer: MainDrawer(),
+      drawer: const MainDrawer(),
       body: Container(
         child: widget.showContext(
           context: context,
@@ -149,12 +149,12 @@ class _CityViewState extends State<CityView> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: saveTrip,
-        child: Icon(Icons.forward),
+        child: const Icon(Icons.forward),
       ),
       bottomNavigationBar: BottomNavigationBar(
         items: [
-          BottomNavigationBarItem(icon: Icon(Icons.map), label: "discovery"),
-          BottomNavigationBarItem(
+          const BottomNavigationBarItem(icon: Icon(Icons.map), label: "discovery"),
+          const BottomNavigationBarItem(
             icon: Icon(Icons.stars),
             label: "booking",
           )

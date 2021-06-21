@@ -6,7 +6,7 @@ class TripOverview extends StatelessWidget {
   final VoidCallback setDate;
   final Trip myTrip;
   final String cityName;
-  double amount;
+  final double amount;
 
   TripOverview(
       {required this.myTrip,

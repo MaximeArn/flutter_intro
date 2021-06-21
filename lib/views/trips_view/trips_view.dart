@@ -14,17 +14,16 @@ class TripsView extends StatefulWidget {
 }
 
 class _TripsViewState extends State<TripsView> {
-  
-  List<Trip> get pastTrips{
-    return widget.trips.where(
-      (Trip trip) => trip.date.isBefore(DateTime.now())
-    ).toList();
+  List<Trip> get pastTrips {
+    return widget.trips
+        .where((Trip trip) => trip.date.isBefore(DateTime.now()))
+        .toList();
   }
 
-  List<Trip> get commingTrips{
-    return widget.trips.where(
-      (Trip trip) => trip.date.isAfter(DateTime.now())
-    ).toList();
+  List<Trip> get commingTrips {
+    return widget.trips
+        .where((Trip trip) => trip.date.isAfter(DateTime.now()))
+        .toList();
   }
 
   @override
@@ -33,21 +32,24 @@ class _TripsViewState extends State<TripsView> {
       length: 2,
       child: Scaffold(
           appBar: AppBar(
-            title: Text("My Trips"),
-            bottom: TabBar(
+            title: const Text("My Trips"),
+            bottom: const TabBar(
               tabs: [
-                Tab(
+                const Tab(
                   text: "Coming",
                 ),
-                Tab(
+                const Tab(
                   text: "Past",
                 ),
               ],
             ),
           ),
-          drawer: MainDrawer(),
+          drawer: const MainDrawer(),
           body: TabBarView(
-            children: [TripList(trips: commingTrips), TripList(trips: pastTrips)],
+            children: [
+              TripList(trips: commingTrips),
+              TripList(trips: pastTrips)
+            ],
           )),
     );
   }

@@ -3,6 +3,8 @@ import 'package:widgets_tests/views/home_view/home.dart';
 import 'package:widgets_tests/views/trips_view/trips_view.dart';
 
 class MainDrawer extends StatelessWidget {
+  const MainDrawer();
+
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -15,7 +17,7 @@ class MainDrawer extends StatelessWidget {
                 Theme.of(context).primaryColor.withOpacity(0.5)
               ], begin: Alignment.topLeft, end: Alignment.bottomRight),
             ),
-            child: Center(
+            child: const Center(
               child: Text(
                 "TravelApp",
                 style: TextStyle(color: Colors.white, fontSize: 30),
@@ -23,8 +25,8 @@ class MainDrawer extends StatelessWidget {
             ),
           ),
           ListTile(
-            leading: Icon(Icons.home),
-            title: Text("home"),
+            leading: const Icon(Icons.home),
+            title: const Text("home"),
             onTap: () {
               Navigator.pushNamed(context, HomeView.routeName);
             },
@@ -34,8 +36,8 @@ class MainDrawer extends StatelessWidget {
             color: Colors.grey.shade600,
           ),
           ListTile(
-            leading: Icon(Icons.flight),
-            title: Text("my trips"),
+            leading: const Icon(Icons.flight),
+            title: const Text("my trips"),
             onTap: () {
               Navigator.pushNamed(context, TripsView.routeName);
             },
