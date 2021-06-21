@@ -8,11 +8,9 @@ import 'package:widgets_tests/views/city_view/widgets/booked_activities.dart';
 import 'package:widgets_tests/views/city_view/widgets/trip_overview.dart';
 import 'package:widgets_tests/views/home_view/home.dart';
 import 'package:widgets_tests/widgets/drawer.dart';
-import '../../data/data.dart' as data;
 
 class CityView extends StatefulWidget {
   static const String routeName = "/city";
-  final List<Activity> activities = data.activities;
   final City city;
 
   CityView({required this.city});
@@ -49,7 +47,7 @@ class _CityViewState extends State<CityView> {
 
   @override
   void initState() {
-    activities = data.activities;
+    activities = widget.city.activites;
     myTrip = Trip(activities: [], city: widget.city.name, date: DateTime.now());
     index = 0;
     super.initState();
@@ -92,7 +90,7 @@ class _CityViewState extends State<CityView> {
 
   double get amount {
     return myTrip.activities.fold(0, (previousValue, element) {
-      Activity activity = widget.activities
+      Activity activity = widget.city.activites
           .firstWhere((Activity activity) => activity.id == element);
       return previousValue + activity.price;
     });

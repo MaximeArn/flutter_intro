@@ -4,7 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:widgets_tests/widgets/drawer.dart';
 
 class HomeView extends StatefulWidget {
+  final List<City> cities;
   static const String routeName = "/";
+
+  HomeView({required this.cities});
+
   @override
   _HomeViewState createState() {
     return _HomeViewState();
@@ -12,24 +16,6 @@ class HomeView extends StatefulWidget {
 }
 
 class _HomeViewState extends State<HomeView> {
-  List<City> cities = [
-    City(name: "Rio", image: "assets/images/cities/rio.jpeg", activites: []),
-    City(
-        image: "assets/images/cities/bangkok.jpeg",
-        name: "Bangkok",
-        activites: []),
-    City(
-        image: "assets/images/cities/paris.jpeg", name: "Paris", activites: []),
-    City(
-        image: "assets/images/cities/new_york.jpeg",
-        name: " New-York",
-        activites: []),
-    City(
-        name: "Malbourne",
-        image: "assets/images/cities/melbourne.jpeg",
-        activites: []),
-  ];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,8 +27,8 @@ class _HomeViewState extends State<HomeView> {
       body: Container(
         padding: EdgeInsets.all(10),
         child: ListView.builder(
-          itemCount: cities.length,
-          itemBuilder: (context, index) => CityCard(city: cities[index]),
+          itemCount: widget.cities.length,
+          itemBuilder: (context, index) => CityCard(city: widget.cities[index]),
         ),
       ),
     );

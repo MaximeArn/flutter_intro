@@ -4,18 +4,23 @@ import 'package:widgets_tests/views/city_view/city_view.dart';
 import 'package:widgets_tests/views/trips_view/trips_view.dart';
 import 'models/city_model.dart';
 import 'views/home_view/home.dart';
+import "./data/data.dart" as data;
 
 void main() {
   runApp(TravelApp());
 }
 
 class TravelApp extends StatelessWidget {
+  final List<City> cities = data.cities;
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       routes: {
-        "/": (BuildContext context) => HomeView(),
+        "/": (BuildContext context) => HomeView(
+              cities: cities,
+            ),
       },
       onGenerateRoute: (RouteSettings settings) {
         switch (settings.name) {
