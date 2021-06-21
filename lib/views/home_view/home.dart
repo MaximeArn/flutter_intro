@@ -13,17 +13,21 @@ class HomeView extends StatefulWidget {
 
 class _HomeViewState extends State<HomeView> {
   List<City> cities = [
-    City(name: "Rio", image: "assets/images/cities/rio.jpeg"),
+    City(name: "Rio", image: "assets/images/cities/rio.jpeg", activites: []),
     City(
-      image: "assets/images/cities/bangkok.jpeg",
-      name: "Bangkok",
-    ),
+        image: "assets/images/cities/bangkok.jpeg",
+        name: "Bangkok",
+        activites: []),
     City(
-      image: "assets/images/cities/paris.jpeg",
-      name: "Paris",
-    ),
-    City(image: "assets/images/cities/new_york.jpeg", name: " New-York"),
-    City(name: "Malbourne", image: "assets/images/cities/melbourne.jpeg"),
+        image: "assets/images/cities/paris.jpeg", name: "Paris", activites: []),
+    City(
+        image: "assets/images/cities/new_york.jpeg",
+        name: " New-York",
+        activites: []),
+    City(
+        name: "Malbourne",
+        image: "assets/images/cities/melbourne.jpeg",
+        activites: []),
   ];
 
   @override

@@ -1,76 +1,44 @@
 import 'package:widgets_tests/models/activity_model.dart';
+import 'package:widgets_tests/models/city_model.dart';
 
-List<Activity> activities = [
-  Activity(
-      image: 'assets/images/activities/louvre.jpeg',
-      name: 'Le Louvre',
-      id: 'a1',
-      city: 'Paris',
-      price: 10),
-  Activity(
-      image: 'assets/images/activities/butes_chaumont.jpeg',
-      name: 'Les buttes Chaumont',
-      id: 'a2',
-      city: 'Paris',
-      price: 15),
-  Activity(
-      image: 'assets/images/activities/notre_dame.jpg',
-      name: 'Notre Dame',
-      id: 'a3',
-      city: 'Paris',
-      price: 19.99),
-  Activity(
-      image: 'assets/images/activities/defense.jpeg',
-      name: 'La Défense',
-      id: 'a4',
-      city: 'Paris',
-      price: 25),
-  Activity(
-      image: 'assets/images/activities/louvre.jpeg',
-      name: 'Le Louvre',
-      id: 'a5',
-      city: 'Paris',
-      price: 10),
-  Activity(
-      image: 'assets/images/activities/butes_chaumont.jpeg',
-      name: 'Les buttes Chaumont',
-      id: 'a6',
-      city: 'Paris',
-      price: 15),
-  Activity(
-      image: 'assets/images/activities/notre_dame.jpg',
-      name: 'Notre Dame',
-      id: 'a7',
-      city: 'Paris',
-      price: 30),
-  Activity(
-      image: 'assets/images/activities/defense.jpeg',
-      name: 'La Défense',
-      id: 'a8',
-      city: 'Paris',
-      price: 7.5),
-  Activity(
-      image: 'assets/images/activities/louvre.jpeg',
-      name: 'Le Louvre',
-      id: 'a9',
-      city: 'Paris',
-      price: 5),
-  Activity(
-      image: 'assets/images/activities/butes_chaumont.jpeg',
-      name: 'Les buttes Chaumont',
-      id: 'a10',
-      city: 'Paris',
-      price: 32),
-  Activity(
-      image: 'assets/images/activities/notre_dame.jpg',
-      name: 'Notre Dame',
-      id: 'a11',
-      city: 'Paris',
-      price: 6.5),
-  Activity(
-      image: 'assets/images/activities/defense.jpeg',
-      name: 'La Défense',
-      id: 'a12',
-      city: 'Paris',
-      price: 5.5),
+List<City> cities = [
+  City(name: "Rio", image: "assets/images/cities/rio.jpeg", activites: []),
+  City(
+      image: "assets/images/cities/bangkok.jpeg",
+      name: "Bangkok",
+      activites: []),
+  City(image: "assets/images/cities/paris.jpeg", name: "Paris", activites: [
+    Activity(
+        image: 'assets/images/activities/louvre.jpeg',
+        name: 'Le Louvre',
+        id: 'a1',
+        city: 'Paris',
+        price: 10),
+    Activity(
+        image: 'assets/images/activities/butes_chaumont.jpeg',
+        name: 'Les buttes Chaumont',
+        id: 'a2',
+        city: 'Paris',
+        price: 15),
+    Activity(
+        image: 'assets/images/activities/notre_dame.jpg',
+        name: 'Notre Dame',
+        id: 'a3',
+        city: 'Paris',
+        price: 19.99),
+    Activity(
+        image: 'assets/images/activities/defense.jpeg',
+        name: 'La Défense',
+        id: 'a4',
+        city: 'Paris',
+        price: 25),
+  ]),
+  City(
+      image: "assets/images/cities/new_york.jpeg",
+      name: " New-York",
+      activites: []),
+  City(
+      name: "Malbourne",
+      image: "assets/images/cities/melbourne.jpeg",
+      activites: []),
 ];
