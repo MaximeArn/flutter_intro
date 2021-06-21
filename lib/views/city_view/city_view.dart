@@ -45,6 +45,14 @@ class _CityViewState extends State<CityView> {
         .toList();
   }
 
+  @override
+  void initState() {
+    activities = data.activities;
+    myTrip = Trip(activities: [], city: widget.city.name, date: DateTime.now());
+    index = 0;
+    super.initState();
+  }
+
   void setDate() {
     showDatePicker(
             context: context,
@@ -58,14 +66,6 @@ class _CityViewState extends State<CityView> {
         });
       }
     });
-  }
-
-  @override
-  void initState() {
-    activities = data.activities;
-    myTrip = Trip(activities: [], city: widget.city.name, date: DateTime.now());
-    index = 0;
-    super.initState();
   }
 
   void changeIndex(newIndex) {
@@ -96,36 +96,53 @@ class _CityViewState extends State<CityView> {
     });
   }
 
+  void saveTrip() {
+    showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return SimpleDialog(title: Text("Save this trip ?", textAlign: TextAlign.center,),);
+        });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          leading: Icon(Icons.chevron_left),
-          title: Text("Organize your trip"),
-          actions: <Widget>[
-            Icon(Icons.more_vert),
-          ]),
+        leading: Icon(Icons.chevron_left),
+        title: Text("Organize your trip"),
+        actions: <Widget>[
+          Icon(Icons.more_vert),
+        ],
+      ),
       body: Container(
-          child: widget.showContext(context: context, children: [
-        TripOverview(
-          myTrip: myTrip,
-          setDate: setDate,
-          cityName: widget.city.name,
-          amount: amount,
+        child: widget.showContext(
+          context: context,
+          children: [
+            TripOverview(
+              myTrip: myTrip,
+              setDate: setDate,
+              cityName: widget.city.name,
+              amount: amount,
+            ),
+            Expanded(
+              child: index == 0
+                  ? ActivitiesList(
+                      activities: activities,
+                      toggleActivity: toggleActivity,
+                      selectedActivities: myTrip.activities,
+                    )
+                  : BookedActivities(
+                      bookedActivities: bookedActivities,
+                      unBookActivity: unBookActivity,
+                    ),
+            ),
+          ],
         ),
-        Expanded(
-          child: index == 0
-              ? ActivitiesList(
-                  activities: activities,
-                  toggleActivity: toggleActivity,
-                  selectedActivities: myTrip.activities,
-                )
-              : BookedActivities(
-                  bookedActivities: bookedActivities,
-                  unBookActivity: unBookActivity,
-                ),
-        ),
-      ])),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: saveTrip,
+        child: Icon(Icons.forward),
+      ),
       bottomNavigationBar: BottomNavigationBar(
         items: [
           BottomNavigationBarItem(icon: Icon(Icons.map), label: "discovery"),
@@ -135,9 +152,11 @@ class _CityViewState extends State<CityView> {
           )
         ],
         onTap: (newIndex) {
-          setState(() {
-            changeIndex(newIndex);
-          });
+          setState(
+            () {
+              changeIndex(newIndex);
+            },
+          );
         },
         currentIndex: index,
       ),
