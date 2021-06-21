@@ -7,13 +7,15 @@ import 'package:widgets_tests/views/city_view/widgets/activities_list.dart';
 import 'package:widgets_tests/views/city_view/widgets/booked_activities.dart';
 import 'package:widgets_tests/views/city_view/widgets/trip_overview.dart';
 import 'package:widgets_tests/views/home_view/home.dart';
+import 'package:widgets_tests/widgets/confirmation_modal.dart';
 import 'package:widgets_tests/widgets/drawer.dart';
 
 class CityView extends StatefulWidget {
   static const String routeName = "/city";
   final City city;
+  final Function addTrip;
 
-  CityView({required this.city});
+  CityView({required this.city, required this.addTrip});
 
   Widget showContext(
       {required BuildContext context, required List<Widget> children}) {
@@ -100,36 +102,10 @@ class _CityViewState extends State<CityView> {
     bool confirmed = await showDialog(
         context: context,
         builder: (BuildContext context) {
-          return SimpleDialog(
-            contentPadding: EdgeInsets.all(25),
-            title: Text(
-              "Save this trip ?",
-              textAlign: TextAlign.center,
-            ),
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  ElevatedButton(
-                    onPressed: () {
-                      Navigator.pop(context, false);
-                    },
-                    child: Text(
-                      "No",
-                    ),
-                  ),
-                  ElevatedButton(
-                    onPressed: () {
-                      Navigator.pop(context, true);
-                    },
-                    child: Text("Yes"),
-                  ),
-                ],
-              )
-            ],
-          );
+          return ConfirmationModal();
         });
     if (confirmed) {
+      widget.addTrip(myTrip);
       Navigator.pushNamed(context, HomeView.routeName);
     }
   }

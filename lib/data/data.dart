@@ -2,8 +2,7 @@ import 'package:widgets_tests/models/activity_model.dart';
 import 'package:widgets_tests/models/city_model.dart';
 
 List<City> cities = [
-  City(
-    name: "Rio", image: "assets/images/cities/rio.jpeg", activites: [
+  City(name: "Rio", image: "assets/images/cities/rio.jpeg", activites: [
     Activity(
         name: "Botanical Garden",
         image: "assets/images/activities/rio/botanical_garden.jpg",
@@ -47,8 +46,7 @@ List<City> cities = [
         city: "Rio",
         price: 22),
   ]),
-  City(
-    image: "assets/images/cities/bangkok.jpeg", name: "Bangkok", activites: [
+  City(image: "assets/images/cities/bangkok.jpeg", name: "Bangkok", activites: [
     Activity(
         name: "China Town",
         image: "assets/images/activities/bangkok/china_town.jpg",
@@ -80,8 +78,7 @@ List<City> cities = [
         city: "Bangkok",
         price: 23),
   ]),
-  City(
-    image: "assets/images/cities/paris.jpeg", name: "Paris", activites: [
+  City(image: "assets/images/cities/paris.jpeg", name: "Paris", activites: [
     Activity(
         image: 'assets/images/activities/paris/louvre.jpeg',
         name: 'Le Louvre',
@@ -113,7 +110,8 @@ List<City> cities = [
       activites: [
         Activity(
             name: "Cathedrale Saint Patrick",
-            image: "assets/images/activities/new-york/catedral_san_patricio.jpg",
+            image:
+                "assets/images/activities/new-york/catedral_san_patricio.jpg",
             id: "new_york_1",
             city: "New-York",
             price: 20),
