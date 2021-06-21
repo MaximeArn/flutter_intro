@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:widgets_tests/views/404_view/not_found.dart';
 import 'package:widgets_tests/views/city_view/city_view.dart';
+import 'package:widgets_tests/views/trips_view/trips_view.dart';
 import 'models/city_model.dart';
 import 'views/home_view/home.dart';
 
@@ -17,11 +18,17 @@ class TravelApp extends StatelessWidget {
         "/": (BuildContext context) => HomeView(),
       },
       onGenerateRoute: (RouteSettings settings) {
-        if (settings.name == CityView.routeName) {
-          City city = settings.arguments as City;
-          return MaterialPageRoute(
-            builder: (BuildContext context) => CityView(city: city),
-          );
+        switch (settings.name) {
+          case CityView.routeName:
+            return MaterialPageRoute(builder: (BuildContext context) {
+              City city = settings.arguments as City;
+              return CityView(city: city);
+            });
+          case TripsView.routeName:
+            return MaterialPageRoute(builder: (BuildContext context) {
+              return TripsView();
+            });
+          default:
         }
       },
       onUnknownRoute: (RouteSettings settings) {

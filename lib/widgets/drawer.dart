@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:widgets_tests/views/home_view/home.dart';
+import 'package:widgets_tests/views/trips_view/trips_view.dart';
 
-class HomeDrawer extends StatelessWidget {
+class MainDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -35,7 +36,9 @@ class HomeDrawer extends StatelessWidget {
           ListTile(
             leading: Icon(Icons.flight),
             title: Text("my trips"),
-            onTap: () {},
+            onTap: () {
+              Navigator.pushNamed(context, TripsView.routeName);
+            },
           ),
         ],
       ),

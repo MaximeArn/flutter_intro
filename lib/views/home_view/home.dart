@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:widgets_tests/widgets/drawer.dart';
 
 class HomeView extends StatefulWidget {
-  static String routeName = "/";
+  static const String routeName = "/";
   @override
   _HomeViewState createState() {
     return _HomeViewState();
@@ -33,7 +33,7 @@ class _HomeViewState extends State<HomeView> {
         title: Text("Travel"),
         actions: <Widget>[Icon(Icons.more_vert)],
       ),
-      drawer: HomeDrawer(),
+      drawer: MainDrawer(),
       body: Container(
         padding: EdgeInsets.all(10),
         child: ListView.builder(

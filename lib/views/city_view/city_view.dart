@@ -7,10 +7,11 @@ import 'package:widgets_tests/views/city_view/widgets/activities_list.dart';
 import 'package:widgets_tests/views/city_view/widgets/booked_activities.dart';
 import 'package:widgets_tests/views/city_view/widgets/trip_overview.dart';
 import 'package:widgets_tests/views/home_view/home.dart';
+import 'package:widgets_tests/widgets/drawer.dart';
 import '../../data/data.dart' as data;
 
 class CityView extends StatefulWidget {
-  static String routeName = "/city";
+  static const String routeName = "/city";
   final List<Activity> activities = data.activities;
   final City city;
 
@@ -139,12 +140,12 @@ class _CityViewState extends State<CityView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: Icon(Icons.chevron_left),
         title: Text("Organize your trip"),
         actions: <Widget>[
           Icon(Icons.more_vert),
         ],
       ),
+      drawer: MainDrawer(),
       body: Container(
         child: widget.showContext(
           context: context,
