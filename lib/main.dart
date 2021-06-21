@@ -49,7 +49,7 @@ class _TravelAppState extends State<TravelApp> {
             });
           case TripsView.routeName:
             return MaterialPageRoute(builder: (BuildContext context) {
-              return TripsView();
+              return TripsView(trips: trips);
             });
           default:
         }
