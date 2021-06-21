@@ -6,13 +6,12 @@ class TripOverview extends StatelessWidget {
   final VoidCallback setDate;
   final Trip myTrip;
   final String cityName;
+  double amount;
 
-  double get amount {
-    return 0;
-  }
+
 
   TripOverview(
-      {required this.myTrip, required this.setDate, required this.cityName});
+      {required this.myTrip, required this.setDate, required this.cityName, required this.amount});
 
   @override
   Widget build(BuildContext context) {
