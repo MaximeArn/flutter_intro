@@ -28,9 +28,14 @@ class HomeDrawer extends StatelessWidget {
               Navigator.pushNamed(context, HomeView.routeName);
             },
           ),
+          Divider(
+            height: 10,
+            color: Colors.grey.shade600,
+          ),
           ListTile(
             leading: Icon(Icons.flight),
             title: Text("my trips"),
+            onTap: () {},
           ),
         ],
       ),

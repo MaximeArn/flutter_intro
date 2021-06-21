@@ -1,8 +1,7 @@
 import 'package:widgets_tests/models/city_model.dart';
 import 'package:widgets_tests/views/home_view/widgets/city_card.dart';
 import 'package:flutter/material.dart';
-import 'package:widgets_tests/views/home_view/widgets/home_drawer.dart';
-import 'package:widgets_tests/widgets/ask_modal.dart';
+import 'package:widgets_tests/widgets/drawer.dart';
 
 class HomeView extends StatefulWidget {
   static String routeName = "/";
@@ -27,39 +26,21 @@ class _HomeViewState extends State<HomeView> {
     City(name: "Malbourne", image: "assets/images/cities/melbourne.jpeg"),
   ];
 
-  void openModal(BuildContext context) {
-    askModal(context, "hello").then((res) {
-      print(res);
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text("Travel"),
-          actions: <Widget>[Icon(Icons.more_vert)],
+      appBar: AppBar(
+        title: Text("Travel"),
+        actions: <Widget>[Icon(Icons.more_vert)],
+      ),
+      drawer: HomeDrawer(),
+      body: Container(
+        padding: EdgeInsets.all(10),
+        child: ListView.builder(
+          itemCount: cities.length,
+          itemBuilder: (context, index) => CityCard(city: cities[index]),
         ),
-        drawer: HomeDrawer(),
-        body: Column(
-          children: [
-            ElevatedButton(
-              onPressed: () {
-                openModal(context);
-              },
-              child: Text("open modal"),
-            ),
-            Expanded(
-              child: Container(
-                padding: EdgeInsets.all(10),
-                child: ListView.builder(
-                  itemCount: cities.length,
-                  itemBuilder: (context, index) =>
-                      CityCard(city: cities[index]),
-                ),
-              ),
-            ),
-          ],
-        ));
+      ),
+    );
   }
 }
