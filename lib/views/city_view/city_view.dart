@@ -34,7 +34,7 @@ class CityView extends StatefulWidget {
   _CityViewState createState() => _CityViewState();
 }
 
-class _CityViewState extends State<CityView> with WidgetsBindingObserver {
+class _CityViewState extends State<CityView>{
   late Trip myTrip;
   late int index;
   late List<Activity> activities;
@@ -61,24 +61,11 @@ class _CityViewState extends State<CityView> with WidgetsBindingObserver {
   }
 
   @override
-  void dispose() {
-    super.dispose();
-    WidgetsBinding.instance!.removeObserver(this);
-  }
-
-  @override
   void initState() {
     activities = data.activities;
-    WidgetsBinding.instance!.addObserver(this);
     myTrip = Trip(activities: [], city: widget.city.name, date: DateTime.now());
     index = 0;
     super.initState();
-  }
-
-  @override
-  void didChangeAppLifecycleState(AppLifecycleState state) {
-    super.didChangeAppLifecycleState(state);
-    print(state);
   }
 
   void changeIndex(newIndex) {
@@ -101,6 +88,10 @@ class _CityViewState extends State<CityView> with WidgetsBindingObserver {
     });
   }
 
+  get amount{
+
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -116,6 +107,7 @@ class _CityViewState extends State<CityView> with WidgetsBindingObserver {
           myTrip: myTrip,
           setDate: setDate,
           cityName: widget.city.name,
+          amount: amount,
         ),
         Expanded(
           child: index == 0

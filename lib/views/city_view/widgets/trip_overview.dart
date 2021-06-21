@@ -8,10 +8,11 @@ class TripOverview extends StatelessWidget {
   final String cityName;
   double amount;
 
-
-
   TripOverview(
-      {required this.myTrip, required this.setDate, required this.cityName, required this.amount});
+      {required this.myTrip,
+      required this.setDate,
+      required this.cityName,
+      required this.amount});
 
   @override
   Widget build(BuildContext context) {
