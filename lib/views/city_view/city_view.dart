@@ -34,7 +34,7 @@ class CityView extends StatefulWidget {
   _CityViewState createState() => _CityViewState();
 }
 
-class _CityViewState extends State<CityView>{
+class _CityViewState extends State<CityView> {
   late Trip myTrip;
   late int index;
   late List<Activity> activities;
@@ -88,8 +88,12 @@ class _CityViewState extends State<CityView>{
     });
   }
 
-  get amount{
-
+  double get amount {
+    return myTrip.activities.fold(0, (previousValue, element) {
+      Activity activity = widget.activities
+          .firstWhere((Activity activity) => activity.id == element);
+      return previousValue + activity.price;
+    });
   }
 
   @override
