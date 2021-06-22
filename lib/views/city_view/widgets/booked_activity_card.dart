@@ -3,7 +3,7 @@ import 'package:widgets_tests/models/activity_model.dart';
 
 class BookedActivityCard extends StatefulWidget {
   final Activity activity;
-  final void Function(String) unBookActivity;
+  final void Function(Activity) unBookActivity;
 
   BookedActivityCard(
       {required Key key, required this.activity, required this.unBookActivity})
@@ -34,7 +34,7 @@ class _BookedActivityCardState extends State<BookedActivityCard> {
         ),
         trailing: IconButton(
           onPressed: () {
-            widget.unBookActivity(widget.activity.id);
+            widget.unBookActivity(widget.activity);
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(
                 content: const Text(

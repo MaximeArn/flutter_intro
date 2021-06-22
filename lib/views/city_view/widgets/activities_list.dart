@@ -4,8 +4,8 @@ import 'package:widgets_tests/views/city_view/widgets/activity_card.dart';
 
 class ActivitiesList extends StatelessWidget {
   final List<Activity> activities;
-  final void Function(String) toggleActivity;
-  final List<String> selectedActivities;
+  final void Function(Activity) toggleActivity;
+  final List<Activity> selectedActivities;
 
   ActivitiesList(
       {required this.activities,
@@ -21,9 +21,9 @@ class ActivitiesList extends StatelessWidget {
         children: activities
             .map((Activity activity) => ActivityCard(
                 activity: activity,
-                isSelected: selectedActivities.contains(activity.id),
+                isSelected: selectedActivities.contains(activity),
                 toggleActivity: () {
-                  toggleActivity(activity.id);
+                  toggleActivity(activity);
                 }))
             .toList());
   }

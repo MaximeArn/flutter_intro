@@ -41,12 +41,6 @@ class _CityViewState extends State<CityView> {
   late int index;
   late List<Activity> activities;
 
-  List<Activity> get bookedActivities {
-    return activities
-        .where((activity) => myTrip.activities.contains(activity.id))
-        .toList();
-  }
-
   @override
   void initState() {
     activities = widget.city.activites;
@@ -76,26 +70,23 @@ class _CityViewState extends State<CityView> {
     });
   }
 
-  void toggleActivity(String id) {
+  void toggleActivity(Activity activity) {
     setState(() {
-      myTrip.activities.contains(id)
-          ? myTrip.activities.remove(id)
-          : myTrip.activities.add(id);
+      myTrip.activities.contains(activity)
+          ? myTrip.activities.remove(activity)
+          : myTrip.activities.add(activity);
     });
   }
 
-  void unBookActivity(String id) {
+  void unBookActivity(Activity activity) {
     setState(() {
-      myTrip.activities.remove(id);
+      myTrip.activities.remove(activity);
     });
   }
 
   double get amount {
-    return myTrip.activities.fold(0, (previousValue, element) {
-      Activity activity = widget.city.activites
-          .firstWhere((Activity activity) => activity.id == element);
-      return previousValue + activity.price;
-    });
+    return myTrip.activities
+        .fold(0, (previousValue, element) => previousValue + element.price);
   }
 
   Future<void> saveTrip() async {
@@ -140,7 +131,7 @@ class _CityViewState extends State<CityView> {
                       selectedActivities: myTrip.activities,
                     )
                   : BookedActivities(
-                      bookedActivities: bookedActivities,
+                      bookedActivities: myTrip.activities,
                       unBookActivity: unBookActivity,
                     ),
             ),
@@ -153,7 +144,8 @@ class _CityViewState extends State<CityView> {
       ),
       bottomNavigationBar: BottomNavigationBar(
         items: [
-          const BottomNavigationBarItem(icon: Icon(Icons.map), label: "discovery"),
+          const BottomNavigationBarItem(
+              icon: Icon(Icons.map), label: "discovery"),
           const BottomNavigationBarItem(
             icon: Icon(Icons.stars),
             label: "booking",

@@ -4,7 +4,7 @@ import 'package:widgets_tests/views/city_view/widgets/booked_activity_card.dart'
 
 class BookedActivities extends StatelessWidget {
   final List<Activity> bookedActivities;
-  final void Function(String) unBookActivity;
+  final void Function(Activity) unBookActivity;
 
   BookedActivities(
       {required this.bookedActivities, required this.unBookActivity});
