@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:widgets_tests/models/trip_model.dart';
+import 'package:widgets_tests/views/trip_view/trip_view.dart';
 
 class TripList extends StatelessWidget {
   final List<Trip> trips;
@@ -20,6 +21,12 @@ class TripList extends StatelessWidget {
             style: const TextStyle(letterSpacing: 1.1),
           ),
           trailing: const Icon(Icons.info),
+          onTap: () {
+            Navigator.pushNamed(context, TripView.routeName, arguments: {
+              "tripId": trip.id,
+              "city": trip.city,
+            });
+          },
         );
       },
     );
