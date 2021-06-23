@@ -79,15 +79,18 @@ class _TravelAppState extends State<TravelApp> {
       },
       onGenerateRoute: (RouteSettings settings) {
         switch (settings.name) {
+
           case CityView.routeName:
             return MaterialPageRoute(builder: (BuildContext context) {
               City city = settings.arguments as City;
               return CityView(city: city, addTrip: addTrip);
             });
+
           case TripsView.routeName:
             return MaterialPageRoute(builder: (BuildContext context) {
               return TripsView(trips: trips);
             });
+
           case TripView.routeName:
             return MaterialPageRoute(
               builder: (BuildContext context) {
@@ -99,6 +102,7 @@ class _TravelAppState extends State<TravelApp> {
                         .firstWhere((City city) => city.name == cityName));
               },
             );
+            
           default:
         }
       },
