@@ -106,7 +106,7 @@ List<City> cities = [
   ]),
   City(
       image: "assets/images/cities/new_york.jpeg",
-      name: " New-York",
+      name: "New-York",
       activites: [
         Activity(
             name: "Cathedrale Saint Patrick",

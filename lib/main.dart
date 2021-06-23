@@ -27,21 +27,21 @@ class _TravelAppState extends State<TravelApp> {
     trips = [
       Trip(
         activities: [],
-        city: "Prague",
+        city: "Rio",
         date: DateTime.now().add(
           Duration(days: 10),
         ),
       ),
       Trip(
         activities: [],
-        city: "Amsterdam",
+        city: "Paris",
         date: DateTime.now().add(
           Duration(days: 20),
         ),
       ),
       Trip(
         activities: [],
-        city: "Bruxelle",
+        city: "New-York",
         date: DateTime.now().add(
           Duration(days: 30),
         ),
@@ -55,7 +55,7 @@ class _TravelAppState extends State<TravelApp> {
       ),
       Trip(
         activities: [],
-        city: "Barcelona",
+        city: "Rio",
         date: DateTime.now().subtract(
           Duration(days: 20),
         ),
@@ -75,11 +75,10 @@ class _TravelAppState extends State<TravelApp> {
       routes: {
         "/": (BuildContext context) => HomeView(
               cities: widget.cities,
-            ),
+            )
       },
       onGenerateRoute: (RouteSettings settings) {
         switch (settings.name) {
-
           case CityView.routeName:
             return MaterialPageRoute(builder: (BuildContext context) {
               City city = settings.arguments as City;
@@ -97,12 +96,13 @@ class _TravelAppState extends State<TravelApp> {
                 String tripId = (settings.arguments as Map)["tripId"];
                 String cityName = (settings.arguments as Map)["city"];
                 return TripView(
-                    trip: trips.firstWhere((Trip trip) => trip.id == tripId),
-                    city: widget.cities
-                        .firstWhere((City city) => city.name == cityName));
+                  trip: trips.firstWhere((Trip trip) => trip.id == tripId),
+                  city: widget.cities
+                      .firstWhere((City city) => city.name == cityName),
+                );
               },
             );
-            
+
           default:
         }
       },

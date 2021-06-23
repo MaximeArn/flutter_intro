@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:widgets_tests/models/city_model.dart';
 import 'package:widgets_tests/models/trip_model.dart';
+import 'package:widgets_tests/views/trip_view/widgets/trip_city_bar.dart';
 
 class TripView extends StatefulWidget {
   static const String routeName = "/trip";
@@ -17,9 +18,12 @@ class _TripViewState extends State<TripView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Text("Trip Detail Here !!"),
-      ),
+      body: SingleChildScrollView(
+        child: Container(child: Column(children: [
+          TripCityBar(city: widget.city),
+          Container(height: 800, color: Colors.blue,),
+        ],),),
+      )
     );
   }
 }
