@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:widgets_tests/models/activity_model.dart';
 import 'package:widgets_tests/views/404_view/not_found.dart';
 import 'package:widgets_tests/views/city_view/city_view.dart';
 import 'package:widgets_tests/views/trip_view/trip_view.dart';
@@ -26,8 +27,39 @@ class _TravelAppState extends State<TravelApp> {
   void initState() {
     trips = [
       Trip(
-        activities: [],
-        city: "Rio",
+        activities: [
+          Activity(
+              name: "China Town",
+              image: "assets/images/activities/bangkok/china_town.jpg",
+              id: "bangkok_1",
+              city: "Bangkok",
+              price: 0),
+          Activity(
+              name: "Grand Palais",
+              image: "assets/images/activities/bangkok/grand_palais.jpg",
+              id: "bangkok_2",
+              city: "Bangkok",
+              price: 25),
+          Activity(
+              name: "Wat Arun",
+              image: "assets/images/activities/bangkok/wat_arun.jpg",
+              id: "bangkok_3",
+              city: "Bangkok",
+              price: 12),
+          Activity(
+              name: "Wat Pho",
+              image: "assets/images/activities/bangkok/wat_pho.jpg",
+              id: "bangkok_4",
+              city: "Bangkok",
+              price: 30),
+          Activity(
+              name: "Wat Saket Mont Dor",
+              image: "assets/images/activities/bangkok/wat_saket_mont_dor.jpg",
+              id: "bangkok_5",
+              city: "Bangkok",
+              price: 23),
+        ],
+        city: "Bangkok",
         date: DateTime.now().add(
           Duration(days: 10),
         ),

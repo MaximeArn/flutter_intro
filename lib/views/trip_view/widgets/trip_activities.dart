@@ -16,9 +16,7 @@ class TripActivities extends StatelessWidget {
           children: [
             Container(
               color: Theme.of(context).primaryColor,
-              child: TabBar(
-                indicatorColor: Colors.blue.shade100,
-                tabs: [
+              child: TabBar(indicatorColor: Colors.blue.shade100, tabs: [
                 Tab(
                   child: Text("Comming"),
                 ),
