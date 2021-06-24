@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:widgets_tests/models/city_model.dart';
 import 'package:widgets_tests/models/trip_model.dart';
+import 'package:widgets_tests/views/trip_view/widgets/trip_activities.dart';
 import 'package:widgets_tests/views/trip_view/widgets/trip_city_bar.dart';
 
 class TripView extends StatefulWidget {
@@ -23,10 +24,7 @@ class _TripViewState extends State<TripView> {
         child: Column(
           children: [
             TripCityBar(city: widget.city),
-            Container(
-              height: 800,
-              color: Colors.blue,
-            ),
+            TripActivities(activities: widget.trip.activities),
           ],
         ),
       ),

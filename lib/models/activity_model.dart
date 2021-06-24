@@ -14,5 +14,5 @@ class Activity {
     required this.id,
     required this.city,
     required this.price,
-  }): status = ActivityStatus.comming;
+  }) : status = ActivityStatus.comming;
 }
