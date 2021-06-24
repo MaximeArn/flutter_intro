@@ -15,18 +15,31 @@ class TripActivitiesList extends StatelessWidget {
         return Container(
           margin: EdgeInsets.symmetric(horizontal: 10),
           child: Dismissible(
-              direction: DismissDirection.endToStart,            
-              background: Container(
-                child: Center(child: Text("done !", style: TextStyle(color: Colors.white, fontSize: 20),)),
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10), color: Colors.green),
+            direction: DismissDirection.endToStart,
+            background: Container(
+              padding: EdgeInsets.symmetric(horizontal: 20),
+              alignment: Alignment.centerRight,
+              child: Icon(
+                Icons.check,
+                color: Colors.white,
+                size: 30,
               ),
-              key: ValueKey(activity.id),
-              child: Card(
-                child: ListTile(
-                  title: Text(activity.name),
-                ),
-              )),
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  gradient: LinearGradient(
+                    colors: [Colors.green.shade700, Colors.green],
+                  )),
+            ),
+            key: ValueKey(activity.id),
+            child: Card(
+              child: ListTile(
+                title: Text(activity.name),
+              ),
+            ),
+            onDismissed: (_) {
+              print("dissmissed");
+            },
+          ),
         );
       },
     );
