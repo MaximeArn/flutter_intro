@@ -18,12 +18,18 @@ class _TripViewState extends State<TripView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SingleChildScrollView(
-        child: Container(child: Column(children: [
-          TripCityBar(city: widget.city),
-          Container(height: 800, color: Colors.blue,),
-        ],),),
-      )
-    );
+        body: SingleChildScrollView(
+      child: Container(
+        child: Column(
+          children: [
+            TripCityBar(city: widget.city),
+            Container(
+              height: 800,
+              color: Colors.blue,
+            ),
+          ],
+        ),
+      ),
+    ));
   }
 }
