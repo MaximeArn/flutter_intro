@@ -7,4 +7,5 @@ class TripProvider with ChangeNotifier {
   List<Trip> _trips = data.trips;
 
   UnmodifiableListView<Trip> get trips => UnmodifiableListView(_trips);
+
 }

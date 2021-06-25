@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:provider/provider.dart';
 import 'package:widgets_tests/models/activity_model.dart';
 import 'package:widgets_tests/models/city_model.dart';
 import 'package:widgets_tests/models/trip_model.dart';
+import 'package:widgets_tests/providers/city_provider.dart';
 import 'package:widgets_tests/views/city_view/widgets/activities_list.dart';
 import 'package:widgets_tests/views/city_view/widgets/booked_activities.dart';
 import 'package:widgets_tests/views/city_view/widgets/trip_overview.dart';
@@ -20,13 +22,11 @@ class CityView extends StatefulWidget {
 class _CityViewState extends State<CityView> {
   late Trip myTrip;
   late int index;
-  late List<Activity> activities;
 
   @override
   void initState() {
-    activities = widget.city.activites;
-    myTrip = Trip(activities: [], city: widget.city.name, date: DateTime.now());
     index = 0;
+    myTrip = Trip(activities: [], city: "", date: DateTime.now());
     super.initState();
   }
 
@@ -70,7 +70,7 @@ class _CityViewState extends State<CityView> {
         .fold(0, (previousValue, element) => previousValue + element.price);
   }
 
-  Future<void> saveTrip() async {
+  Future<void> saveTrip(String cityName) async {
     bool confirmed = await showDialog(
         context: context,
         builder: (BuildContext context) {
@@ -79,13 +79,16 @@ class _CityViewState extends State<CityView> {
           );
         });
     if (confirmed) {
-      widget.addTrip(myTrip);
+      myTrip.city = cityName;
       Navigator.pushNamed(context, HomeView.routeName);
     }
   }
 
   @override
   Widget build(BuildContext context) {
+    String cityName = ModalRoute.of(context)!.settings.arguments as String;
+    City city = Provider.of<CityProvider>(context).getCityByName(cityName);
+
     return Scaffold(
       appBar: AppBar(
         title: Text("Organize your trip"),
@@ -100,13 +103,13 @@ class _CityViewState extends State<CityView> {
             TripOverview(
               myTrip: myTrip,
               setDate: setDate,
-              cityName: widget.city.name,
+              cityName: city.name,
               amount: amount,
             ),
             Expanded(
               child: index == 0
                   ? ActivitiesList(
-                      activities: activities,
+                      activities: city.activites,
                       toggleActivity: toggleActivity,
                       selectedActivities: myTrip.activities,
                     )
@@ -119,7 +122,9 @@ class _CityViewState extends State<CityView> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: saveTrip,
+        onPressed: () {
+          saveTrip(city.name);
+        },
         child: const Icon(Icons.forward),
       ),
       bottomNavigationBar: BottomNavigationBar(
