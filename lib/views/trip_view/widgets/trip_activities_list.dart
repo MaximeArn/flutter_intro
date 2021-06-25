@@ -1,18 +1,23 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:widgets_tests/models/activity_model.dart';
+import 'package:widgets_tests/models/trip_model.dart';
 import 'package:widgets_tests/providers/trip_provider.dart';
 
 class TripActivitiesList extends StatelessWidget {
-  final List<Activity> activities;
   final ActivityStatus filter;
+  final String tripId;
 
-  TripActivitiesList({required this.activities, required this.filter});
+  TripActivitiesList({required this.filter, required this.tripId});
 
   @override
   Widget build(BuildContext context) {
+    final Trip trip = Provider.of<TripProvider>(context).getTripById(tripId);
+    final List<Activity> activities = trip.activities
+        .where((Activity activity) => activity.status == filter)
+        .toList();
+
+    print("build 3");
     return ListView.builder(
       itemCount: activities.length,
       itemBuilder: (BuildContext context, int index) {
