@@ -12,25 +12,6 @@ import 'package:widgets_tests/widgets/drawer.dart';
 
 class CityView extends StatefulWidget {
   static const String routeName = "/city";
-  final City city;
-  final Function addTrip;
-
-  CityView({required this.city, required this.addTrip});
-
-  Widget showContext(
-      {required BuildContext context, required List<Widget> children}) {
-    Orientation orientation = MediaQuery.of(context).orientation;
-    if (orientation == Orientation.landscape) {
-      return Row(
-        children: children,
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-      );
-    } else {
-      return Column(
-        children: children,
-      );
-    }
-  }
 
   @override
   _CityViewState createState() => _CityViewState();
@@ -114,8 +95,7 @@ class _CityViewState extends State<CityView> {
       ),
       drawer: const MainDrawer(),
       body: Container(
-        child: widget.showContext(
-          context: context,
+        child: Column(
           children: [
             TripOverview(
               myTrip: myTrip,

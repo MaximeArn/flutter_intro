@@ -150,70 +150,70 @@ List<City> cities = [
 ];
 
 List<Trip> trips = [
-      Trip(
-        activities: [
-          Activity(
-              name: "China Town",
-              image: "assets/images/activities/bangkok/china_town.jpg",
-              id: "bangkok_1",
-              city: "Bangkok",
-              price: 0),
-          Activity(
-              name: "Grand Palais",
-              image: "assets/images/activities/bangkok/grand_palais.jpg",
-              id: "bangkok_2",
-              city: "Bangkok",
-              price: 25),
-          Activity(
-              name: "Wat Arun",
-              image: "assets/images/activities/bangkok/wat_arun.jpg",
-              id: "bangkok_3",
-              city: "Bangkok",
-              price: 12),
-          Activity(
-              name: "Wat Pho",
-              image: "assets/images/activities/bangkok/wat_pho.jpg",
-              id: "bangkok_4",
-              city: "Bangkok",
-              price: 30),
-          Activity(
-              name: "Wat Saket Mont Dor",
-              image: "assets/images/activities/bangkok/wat_saket_mont_dor.jpg",
-              id: "bangkok_5",
-              city: "Bangkok",
-              price: 23),
-        ],
-        city: "Bangkok",
-        date: DateTime.now().add(
-          Duration(days: 10),
-        ),
-      ),
-      Trip(
-        activities: [],
-        city: "Paris",
-        date: DateTime.now().add(
-          Duration(days: 20),
-        ),
-      ),
-      Trip(
-        activities: [],
-        city: "New-York",
-        date: DateTime.now().add(
-          Duration(days: 30),
-        ),
-      ),
-      Trip(
-        activities: [],
-        city: "Paris",
-        date: DateTime.now().subtract(
-          Duration(days: 10),
-        ),
-      ),
-      Trip(
-        activities: [],
-        city: "Rio",
-        date: DateTime.now().subtract(
-          Duration(days: 20),
-        ),
-      ),
-    ];
+  Trip(
+    activities: [
+      Activity(
+          name: "China Town",
+          image: "assets/images/activities/bangkok/china_town.jpg",
+          id: "bangkok_1",
+          city: "Bangkok",
+          price: 0),
+      Activity(
+          name: "Grand Palais",
+          image: "assets/images/activities/bangkok/grand_palais.jpg",
+          id: "bangkok_2",
+          city: "Bangkok",
+          price: 25),
+      Activity(
+          name: "Wat Arun",
+          image: "assets/images/activities/bangkok/wat_arun.jpg",
+          id: "bangkok_3",
+          city: "Bangkok",
+          price: 12),
+      Activity(
+          name: "Wat Pho",
+          image: "assets/images/activities/bangkok/wat_pho.jpg",
+          id: "bangkok_4",
+          city: "Bangkok",
+          price: 30),
+      Activity(
+          name: "Wat Saket Mont Dor",
+          image: "assets/images/activities/bangkok/wat_saket_mont_dor.jpg",
+          id: "bangkok_5",
+          city: "Bangkok",
+          price: 23),
+    ],
+    city: "Bangkok",
+    date: DateTime.now().add(
+      Duration(days: 10),
+    ),
+  ),
+  Trip(
+    activities: [],
+    city: "Paris",
+    date: DateTime.now().add(
+      Duration(days: 20),
+    ),
+  ),
+  Trip(
+    activities: [],
+    city: "New-York",
+    date: DateTime.now().add(
+      Duration(days: 30),
+    ),
+  ),
+  Trip(
+    activities: [],
+    city: "Paris",
+    date: DateTime.now().subtract(
+      Duration(days: 10),
+    ),
+  ),
+  Trip(
+    activities: [],
+    city: "Rio",
+    date: DateTime.now().subtract(
+      Duration(days: 20),
+    ),
+  ),
+];
