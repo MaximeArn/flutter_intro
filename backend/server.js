@@ -10,7 +10,7 @@ app.use(cors());
 mongoose.set("debug", true);
 mongoose
   .connect(
-    "mongodb+srv://maxime:TravelAppPassword@cluster0.elh3w.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
+    "mongodb+srv://maxime:TravelAppPassword@cluster0.elh3w.mongodb.net/travelApp?retryWrites=true&w=majority",
     {
       useNewUrlParser: true,
       useUnifiedTopology: true,
