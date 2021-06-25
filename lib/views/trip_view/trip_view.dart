@@ -1,30 +1,31 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:widgets_tests/models/city_model.dart';
 import 'package:widgets_tests/models/trip_model.dart';
+import 'package:widgets_tests/providers/city_provider.dart';
+import 'package:widgets_tests/providers/trip_provider.dart';
 import 'package:widgets_tests/views/trip_view/widgets/trip_activities.dart';
 import 'package:widgets_tests/views/trip_view/widgets/trip_city_bar.dart';
 
-class TripView extends StatefulWidget {
+class TripView extends StatelessWidget {
   static const String routeName = "/trip";
-  final Trip trip;
-  final City city;
-
-  TripView({required this.city, required this.trip});
-
-  @override
-  _TripViewState createState() => _TripViewState();
-}
-
-class _TripViewState extends State<TripView> {
   @override
   Widget build(BuildContext context) {
+    final String cityName =
+        (ModalRoute.of(context)!.settings.arguments as Map)["city"];
+    final String tripId =
+        (ModalRoute.of(context)!.settings.arguments as Map)["tripId"];
+    final City city =
+        Provider.of<CityProvider>(context).getCityByName(cityName);
+    final Trip trip = Provider.of<TripProvider>(context).getTripById(tripId);
+
     return Scaffold(
         body: SingleChildScrollView(
       child: Container(
         child: Column(
           children: [
-            TripCityBar(city: widget.city),
-            TripActivities(activities: widget.trip.activities),
+            TripCityBar(city: city),
+            TripActivities(activities: trip.activities),
           ],
         ),
       ),

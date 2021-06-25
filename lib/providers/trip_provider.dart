@@ -12,4 +12,7 @@ class TripProvider with ChangeNotifier {
     _trips.add(trip);
     notifyListeners();
   }
+
+  Trip getTripById(String id) =>
+      _trips.firstWhere((Trip trip) => trip.id == id);
 }
