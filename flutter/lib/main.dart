@@ -6,7 +6,6 @@ import 'package:widgets_tests/views/404_view/not_found.dart';
 import 'package:widgets_tests/views/city_view/city_view.dart';
 import 'package:widgets_tests/views/trip_view/trip_view.dart';
 import 'package:widgets_tests/views/trips_view/trips_view.dart';
-import 'models/trip_model.dart';
 import 'views/home_view/home.dart';
 
 void main() {
@@ -19,7 +18,13 @@ class TravelApp extends StatefulWidget {
 }
 
 class _TravelAppState extends State<TravelApp> {
-  late List<Trip> trips;
+  final CityProvider cityProvider = CityProvider();
+
+  @override
+  void initState() {
+    cityProvider.fetchCities();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
