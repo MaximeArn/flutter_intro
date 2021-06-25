@@ -8,5 +8,6 @@ class CityProvider with ChangeNotifier {
 
   UnmodifiableListView<City> get cities => UnmodifiableListView(_cities);
 
-  City getCityByName( String name) => cities.firstWhere((city) => city.name == name);
+  City getCityByName(String name) =>
+      cities.firstWhere((city) => city.name == name);
 }

@@ -32,8 +32,12 @@ class _TravelAppState extends State<TravelApp> {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider.value(value: CityProvider(),),
-        ChangeNotifierProvider.value(value: TripProvider(),),
+        ChangeNotifierProvider.value(
+          value: CityProvider(),
+        ),
+        ChangeNotifierProvider.value(
+          value: TripProvider(),
+        ),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

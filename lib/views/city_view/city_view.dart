@@ -5,6 +5,7 @@ import 'package:widgets_tests/models/activity_model.dart';
 import 'package:widgets_tests/models/city_model.dart';
 import 'package:widgets_tests/models/trip_model.dart';
 import 'package:widgets_tests/providers/city_provider.dart';
+import 'package:widgets_tests/providers/trip_provider.dart';
 import 'package:widgets_tests/views/city_view/widgets/activities_list.dart';
 import 'package:widgets_tests/views/city_view/widgets/booked_activities.dart';
 import 'package:widgets_tests/views/city_view/widgets/trip_overview.dart';
@@ -80,6 +81,7 @@ class _CityViewState extends State<CityView> {
         });
     if (confirmed) {
       myTrip.city = cityName;
+      Provider.of<TripProvider>(context).addTrip(myTrip);
       Navigator.pushNamed(context, HomeView.routeName);
     }
   }

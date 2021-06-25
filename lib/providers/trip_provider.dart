@@ -8,4 +8,8 @@ class TripProvider with ChangeNotifier {
 
   UnmodifiableListView<Trip> get trips => UnmodifiableListView(_trips);
 
+  void addTrip(Trip trip) {
+    _trips.add(trip);
+    notifyListeners();
+  }
 }
