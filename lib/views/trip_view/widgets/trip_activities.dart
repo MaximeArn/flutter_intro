@@ -30,8 +30,19 @@ class TripActivities extends StatelessWidget {
               child: TabBarView(
                 physics: NeverScrollableScrollPhysics(),
                 children: [
-                  TripActivitiesList(activities: activities),
-                  TripActivitiesList(activities: activities)
+                  TripActivitiesList(
+                    activities: activities
+                        .where((Activity activity) =>
+                            activity.status == ActivityStatus.comming)
+                        .toList(),
+                    filter: ActivityStatus.comming,
+                  ),
+                  TripActivitiesList(
+                      activities: activities
+                          .where((Activity activity) =>
+                              activity.status == ActivityStatus.past)
+                          .toList(),
+                      filter: ActivityStatus.past)
                 ],
               ),
             ),

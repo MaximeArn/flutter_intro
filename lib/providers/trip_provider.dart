@@ -1,4 +1,6 @@
 import 'dart:collection';
+import 'package:widgets_tests/models/activity_model.dart';
+
 import "../data/data.dart" as data;
 import 'package:flutter/material.dart';
 import 'package:widgets_tests/models/trip_model.dart';
@@ -15,4 +17,9 @@ class TripProvider with ChangeNotifier {
 
   Trip getTripById(String id) =>
       _trips.firstWhere((Trip trip) => trip.id == id);
+
+  void setActivityToDone(Activity activity) {
+    activity.status = ActivityStatus.past;
+    notifyListeners();
+  }
 }
