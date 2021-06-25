@@ -43,7 +43,8 @@ class _TravelAppState extends State<TravelApp> {
         debugShowCheckedModeBanner: false,
         routes: {
           "/": (BuildContext context) => HomeView(),
-          CityView.routeName: (BuildContext context) => CityView()
+          CityView.routeName: (BuildContext context) => CityView(),
+          TripsView.routeName: (BuildContext context) => TripsView(),
         },
         // onGenerateRoute: (RouteSettings settings) {
         //   switch (settings.name) {
