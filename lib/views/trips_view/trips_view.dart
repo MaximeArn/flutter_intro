@@ -8,13 +8,13 @@ import 'package:widgets_tests/widgets/drawer.dart';
 class TripsView extends StatelessWidget {
   static const String routeName = "/trips";
 
-  List<Trip> pastTrips(List<Trip> trips){
+  List<Trip> pastTrips(List<Trip> trips) {
     return trips
         .where((Trip trip) => trip.date.isBefore(DateTime.now()))
         .toList();
   }
 
-  List<Trip> commingTrips(List<Trip> trips){
+  List<Trip> commingTrips(List<Trip> trips) {
     return trips
         .where((Trip trip) => trip.date.isAfter(DateTime.now()))
         .toList();
@@ -22,8 +22,7 @@ class TripsView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
-  List<Trip> trips = Provider.of<TripProvider>(context).trips;
+    List<Trip> trips = Provider.of<TripProvider>(context).trips;
 
     return DefaultTabController(
       length: 2,
