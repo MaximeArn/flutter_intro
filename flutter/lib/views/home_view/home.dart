@@ -18,7 +18,8 @@ class _HomeViewState extends State<HomeView> {
   @override
   Widget build(BuildContext context) {
     List<City> cities = Provider.of<CityProvider>(context).cities;
-
+    print("build");
+    print(cities.length);
     return Scaffold(
       appBar: AppBar(
         title: const Text("Travel"),
