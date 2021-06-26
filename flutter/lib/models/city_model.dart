@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:widgets_tests/models/activity_model.dart';
 
 class City {
@@ -7,9 +6,14 @@ class City {
   String image;
   List<Activity> activites;
 
-  City({required this.id,required this.name, required this.image, required this.activites});
 
-  City.fromJson(Map<String, dynamic> json)
+  City(
+      {required this.id,
+      required this.name,
+      required this.image,
+      required this.activites});
+
+   City.fromJson(Map<String, dynamic> json)
       : id = json['_id'],
         image = json['image'],
         name = json['name'],
