@@ -1,5 +1,6 @@
 import 'dart:collection';
 import 'package:flutter/foundation.dart';
+import "dart:convert";
 import 'package:http/http.dart' as http;
 import 'package:widgets_tests/models/city_model.dart';
 
@@ -12,16 +13,12 @@ class CityProvider with ChangeNotifier {
       cities.firstWhere((city) => city.name == name);
 
   fetchCities() async {
-    Uri url = Uri.http(
-      "10.0.2.2:80",
-      "/api/cities",
-    );
-
     try {
-      http.Response response = await http.get(url);
-      print(response.statusCode);
-      print(response.body);
-      print(response.request);
+      http.Response response =
+          await http.get(Uri.parse("http://localhost:80/api/cities"));
+      if (response.statusCode == 200) {
+        print(json.decode(response.body));
+      }
     } catch (e) {
       print(e);
       rethrow;
