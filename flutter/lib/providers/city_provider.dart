@@ -1,4 +1,5 @@
 import 'dart:collection';
+import 'dart:convert';
 import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 import 'package:widgets_tests/models/city_model.dart';
@@ -8,22 +9,21 @@ class CityProvider with ChangeNotifier {
 
   UnmodifiableListView<City> get cities => UnmodifiableListView(_cities);
 
-  City getCityByName(String name) =>
-      cities.firstWhere((city) => city.name == name);
+  City getCityByName(String cityName) =>
+      cities.firstWhere((city) => city.name == cityName);
 
-  fetchCities() async {
-    Uri url = Uri.http(
-      "10.0.2.2:80",
-      "/api/cities",
-    );
-
+  void fetchCities() async {
     try {
-      http.Response response = await http.get(url);
-      print(response.statusCode);
-      print(response.body);
-      print(response.request);
+      http.Response response =
+          await http.get(Uri.parse('http://localhost:80/api/cities'));
+      if (response.statusCode == 200) {
+        _cities = (json.decode(response.body) as List)
+            .map((cityJson) => City.fromJson(cityJson))
+            .toList();
+        print(_cities[0].name);
+        notifyListeners();
+      }
     } catch (e) {
-      print(e);
       rethrow;
     }
   }
