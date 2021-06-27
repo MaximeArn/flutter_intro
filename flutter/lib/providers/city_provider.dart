@@ -17,7 +17,8 @@ class CityProvider with ChangeNotifier {
   Future<void> fetchData() async {
     try {
       isLoading = true;
-      http.Response response = await http.get(Uri.parse('$serverUrl/api/cities'));
+      http.Response response =
+          await http.get(Uri.parse('$serverUrl/api/cities'));
       if (response.statusCode == 200) {
         _cities = (json.decode(response.body) as List)
             .map((cityJson) => City.fromJson(cityJson))

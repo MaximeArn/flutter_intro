@@ -15,17 +15,15 @@ class TripProvider with ChangeNotifier {
 
   Future<void> fetchData() async {
     try {
-      isLoading = true;
-      http.Response response = await http.get(Uri.parse('$serverUrl/api/trips'));
+      http.Response response =
+          await http.get(Uri.parse('$serverUrl/api/trips'));
       if (response.statusCode == 200) {
         _trips = (json.decode(response.body) as List)
             .map((tripJson) => Trip.fromJson(tripJson))
             .toList();
-        isLoading = false;
-        notifyListeners();
       }
+      notifyListeners();
     } catch (e) {
-      isLoading = false;
       rethrow;
     }
   }
@@ -33,7 +31,7 @@ class TripProvider with ChangeNotifier {
   Future<void> addTrip(Trip trip) async {
     try {
       http.Response response = await http.post(
-        Uri.parse('$serverUrl/api/trip'),
+        Uri.parse("$serverUrl/api/trip"),
         body: json.encode(
           trip.toJson(),
         ),

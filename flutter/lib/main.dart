@@ -25,6 +25,7 @@ class _DymaTripState extends State<DymaTrip> {
   @override
   void initState() {
     cityProvider.fetchData();
+    tripProvider.fetchData();
     super.initState();
   }
 

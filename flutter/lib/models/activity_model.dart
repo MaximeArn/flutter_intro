@@ -32,7 +32,7 @@ class Activity {
       'image': image,
       'city': city,
       'price': price,
-      'status': status == ActivityStatus.ongoing ? 0 : 1
+      'status': status == ActivityStatus.ongoing ? 0 : 1,
     };
   }
 }
