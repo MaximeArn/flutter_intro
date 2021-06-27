@@ -3,7 +3,7 @@ import '../../providers/trip_provider.dart';
 import '../../views/trips/widgets/trip_list.dart';
 import '../../widgets/dyma_loader.dart';
 import 'package:provider/provider.dart';
-import '../../widgets/dyma_drawer.dart';
+import '../../widgets/main_drawer.dart';
 
 class TripsView extends StatelessWidget {
   static const String routeName = '/trips';
@@ -27,7 +27,7 @@ class TripsView extends StatelessWidget {
             ],
           ),
         ),
-        drawer: const DymaDrawer(),
+        drawer: const MainDrawer(),
         body: tripProvider.isLoading != true
             ? tripProvider.trips.length > 0
                 ? TabBarView(

@@ -3,7 +3,7 @@ import '../../providers/city_provider.dart';
 import '../../widgets/dyma_loader.dart';
 import 'package:provider/provider.dart';
 import './widgets/city_card.dart';
-import '../../widgets/dyma_drawer.dart';
+import '../../widgets/main_drawer.dart';
 import '../../models/city_model.dart';
 
 class HomeView extends StatefulWidget {
@@ -23,7 +23,7 @@ class _HomeState extends State<HomeView> {
       appBar: AppBar(
         title: const Text('dymatrip'),
       ),
-      drawer: const DymaDrawer(),
+      drawer: const MainDrawer(),
       body: Container(
         padding: const EdgeInsets.all(10),
         child: RefreshIndicator(

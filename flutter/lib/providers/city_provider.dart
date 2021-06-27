@@ -1,12 +1,12 @@
-import 'dart:collection';
-
 import 'package:flutter/foundation.dart';
-import '../models/city_model.dart';
-import 'package:http/http.dart' as http;
+import 'dart:collection';
 import 'dart:convert';
+import 'dart:io';
+import 'package:http/http.dart' as http;
+import '../models/city_model.dart';
 
 class CityProvider with ChangeNotifier {
-  final String host = 'http://localhost';
+  final String host = Platform.isAndroid ? 'http://10.0.2.2' : "http://localhost" ;
   List<City> _cities = [];
   bool isLoading = false;
 
@@ -24,7 +24,6 @@ class CityProvider with ChangeNotifier {
             .map((cityJson) => City.fromJson(cityJson))
             .toList();
         isLoading = false;
-        print(_cities[0].image);
         notifyListeners();
       }
     } catch (e) {

@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import '../views/home/home_view.dart';
 import '../views/trips/trips_view.dart';
 
-class DymaDrawer extends StatelessWidget {
-  const DymaDrawer();
+class MainDrawer extends StatelessWidget {
+  const MainDrawer();
 
   @override
   Widget build(BuildContext context) {

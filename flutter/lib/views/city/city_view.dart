@@ -7,7 +7,7 @@ import './widgets/trip_activity_list.dart';
 import './widgets/activity_list.dart';
 import './widgets/trip_overview.dart';
 import '../../views/home/home_view.dart';
-import '../../widgets/dyma_drawer.dart';
+import '../../widgets/main_drawer.dart';
 
 import '../../models/city_model.dart';
 import '../../models/activity_model.dart';
@@ -145,7 +145,7 @@ class _CityState extends State<CityView> {
       appBar: AppBar(
         title: const Text('Organisation voyage'),
       ),
-      drawer: const DymaDrawer(),
+      drawer: const MainDrawer(),
       body: Container(
         child: Column(
           children: <Widget>[
