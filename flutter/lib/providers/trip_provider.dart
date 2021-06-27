@@ -1,14 +1,13 @@
 import 'dart:collection';
 import 'dart:io';
-
 import 'package:flutter/widgets.dart';
+import 'package:flutter_chapitre13/environment/env.dart';
 import '../models/activity_model.dart';
 import '../models/trip_model.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
 class TripProvider with ChangeNotifier {
-  final String host = 'http://10.0.2.2';
   List<Trip> _trips = [];
   bool isLoading = false;
 
@@ -17,7 +16,7 @@ class TripProvider with ChangeNotifier {
   Future<void> fetchData() async {
     try {
       isLoading = true;
-      http.Response response = await http.get(Uri.parse('$host/api/trips'));
+      http.Response response = await http.get(Uri.parse('$serverUrl/api/trips'));
       if (response.statusCode == 200) {
         _trips = (json.decode(response.body) as List)
             .map((tripJson) => Trip.fromJson(tripJson))
@@ -34,7 +33,7 @@ class TripProvider with ChangeNotifier {
   Future<void> addTrip(Trip trip) async {
     try {
       http.Response response = await http.post(
-        Uri.parse('$host/api/trip'),
+        Uri.parse('$serverUrl/api/trip'),
         body: json.encode(
           trip.toJson(),
         ),
@@ -59,7 +58,7 @@ class TripProvider with ChangeNotifier {
           trip.activities.firstWhere((activity) => activity.id == activityId);
       activity.status = ActivityStatus.done;
       http.Response response = await http.put(
-        Uri.parse('$host/api/trip'),
+        Uri.parse('$serverUrl/api/trip'),
         body: json.encode(
           trip.toJson(),
         ),

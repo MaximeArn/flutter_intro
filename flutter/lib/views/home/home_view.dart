@@ -26,17 +26,17 @@ class _HomeState extends State<HomeView> {
       drawer: const MainDrawer(),
       body: Container(
         padding: const EdgeInsets.all(10),
-        child: RefreshIndicator(
-          onRefresh: Provider.of<CityProvider>(context).fetchData,
-          child: cities.length > 0
-              ? ListView.builder(
+        child: cities.length > 0
+            ? RefreshIndicator(
+              onRefresh: Provider.of<CityProvider>(context).fetchData,
+              child: ListView.builder(
                   itemCount: cities.length,
-                  itemBuilder: (_, i) => CityCard(
-                    city: cities[i],
+                  itemBuilder: (_, index) => CityCard(
+                    city: cities[index],
                   ),
-                )
-              : DymaLoader(),
-        ),
+                ),
+            )
+            : DymaLoader(),
       ),
     );
   }
