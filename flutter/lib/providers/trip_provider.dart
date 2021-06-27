@@ -1,23 +1,81 @@
 import 'dart:collection';
-import 'package:widgets_tests/models/activity_model.dart';
-import 'package:flutter/material.dart';
-import 'package:widgets_tests/models/trip_model.dart';
+import 'dart:io';
+
+import 'package:flutter/widgets.dart';
+import '../models/activity_model.dart';
+import '../models/trip_model.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 
 class TripProvider with ChangeNotifier {
+  final String host = 'http://10.0.2.2';
   List<Trip> _trips = [];
+  bool isLoading = false;
 
   UnmodifiableListView<Trip> get trips => UnmodifiableListView(_trips);
 
-  void addTrip(Trip trip) {
-    _trips.add(trip);
-    notifyListeners();
+  Future<void> fetchData() async {
+    try {
+      isLoading = true;
+      http.Response response = await http.get(Uri.parse('$host/api/trips'));
+      if (response.statusCode == 200) {
+        _trips = (json.decode(response.body) as List)
+            .map((tripJson) => Trip.fromJson(tripJson))
+            .toList();
+        isLoading = false;
+        notifyListeners();
+      }
+    } catch (e) {
+      isLoading = false;
+      rethrow;
+    }
   }
 
-  Trip getTripById(String id) =>
-      _trips.firstWhere((Trip trip) => trip.id == id);
+  Future<void> addTrip(Trip trip) async {
+    try {
+      http.Response response = await http.post(
+        Uri.parse('$host/api/trip'),
+        body: json.encode(
+          trip.toJson(),
+        ),
+        headers: {'Content-type': 'application/json'},
+      );
+      if (response.statusCode == 200) {
+        _trips.add(
+          Trip.fromJson(
+            json.decode(response.body),
+          ),
+        );
+        notifyListeners();
+      }
+    } catch (e) {
+      rethrow;
+    }
+  }
 
-  void setActivityToDone(Activity activity) {
-    activity.status = ActivityStatus.past;
-    notifyListeners();
+  Future<void> updateTrip(Trip trip, String activityId) async {
+    try {
+      Activity activity =
+          trip.activities.firstWhere((activity) => activity.id == activityId);
+      activity.status = ActivityStatus.done;
+      http.Response response = await http.put(
+        Uri.parse('$host/api/trip'),
+        body: json.encode(
+          trip.toJson(),
+        ),
+        headers: {'Content-type': 'application/json'},
+      );
+      if (response.statusCode != 200) {
+        activity.status = ActivityStatus.ongoing;
+        throw HttpException('error');
+      }
+      notifyListeners();
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  Trip getById(String tripId) {
+    return trips.firstWhere((trip) => trip.id == tripId);
   }
 }

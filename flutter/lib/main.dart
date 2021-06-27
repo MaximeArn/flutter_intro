@@ -1,53 +1,51 @@
 import 'package:flutter/material.dart';
+import './providers/city_provider.dart';
+import './providers/trip_provider.dart';
+import './views/trip/trip_view.dart';
 import 'package:provider/provider.dart';
-import 'package:widgets_tests/providers/city_provider.dart';
-import 'package:widgets_tests/providers/trip_provider.dart';
-import 'package:widgets_tests/views/404_view/not_found.dart';
-import 'package:widgets_tests/views/city_view/city_view.dart';
-import 'package:widgets_tests/views/trip_view/trip_view.dart';
-import 'package:widgets_tests/views/trips_view/trips_view.dart';
-import 'views/home_view/home.dart';
 
-void main() {
-  runApp(TravelApp());
+import './views/city/city_view.dart';
+import './views/home/home_view.dart';
+import './views/not-found/not_found.dart';
+import './views/trips/trips_view.dart';
+
+main() {
+  runApp(DymaTrip());
 }
 
-class TravelApp extends StatefulWidget {
+class DymaTrip extends StatefulWidget {
   @override
-  _TravelAppState createState() => _TravelAppState();
+  _DymaTripState createState() => _DymaTripState();
 }
 
-class _TravelAppState extends State<TravelApp> {
+class _DymaTripState extends State<DymaTrip> {
   final CityProvider cityProvider = CityProvider();
+  final TripProvider tripProvider = TripProvider();
 
   @override
   void initState() {
-    cityProvider.fetchCities();
+    cityProvider.fetchData();
+    tripProvider.fetchData();
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider.value(
-          value: CityProvider(),
-        ),
-        ChangeNotifierProvider.value(
-          value: TripProvider(),
-        ),
+        ChangeNotifierProvider.value(value: cityProvider),
+        ChangeNotifierProvider.value(value: tripProvider),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         routes: {
-          "/": (_) => HomeView(),
+          '/': (_) => HomeView(),
           CityView.routeName: (_) => CityView(),
           TripsView.routeName: (_) => TripsView(),
-          TripView.routeName: (_) => TripView(),
+          TripView.routeName: (_) => TripView()
         },
         onUnknownRoute: (_) => MaterialPageRoute(
-          builder: (_) => const NotFound(),
+          builder: (_) => NotFound(),
         ),
       ),
     );
