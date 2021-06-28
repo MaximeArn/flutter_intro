@@ -27,13 +27,14 @@ class Activity {
 
   Map<String, dynamic> toJson() {
     Map<String, dynamic> value = {
-      '_id': id,
       'name': name,
       'image': image,
       'city': city,
       'price': price,
       'status': status == ActivityStatus.ongoing ? 0 : 1,
     };
+    print(value);
+    if (id != "") value['_id'] = id;
     return value;
   }
 }

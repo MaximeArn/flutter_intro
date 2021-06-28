@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:widgets_tests/models/activity_model.dart';
+import 'package:widgets_tests/providers/city_provider.dart';
 
 class AddActivityForm extends StatefulWidget {
   final String cityName;
@@ -15,14 +17,15 @@ class _AddActivityFormState extends State<AddActivityForm> {
   late FocusNode _priceFocusNode;
   late FocusNode _urlFocusNode;
   late Activity _newActivity;
+  bool _isLoading = false;
 
   @override
   void initState() {
     _priceFocusNode = FocusNode();
     _urlFocusNode = FocusNode();
     _newActivity = Activity(
-        name: widget.cityName,
-        city: "",
+        name: "",
+        city: widget.cityName,
         id: "",
         image: "",
         price: 0,
@@ -30,10 +33,22 @@ class _AddActivityFormState extends State<AddActivityForm> {
     super.initState();
   }
 
-  void submitForm() {
-    _formKey.currentState!.validate() == true
-        ? _formKey.currentState?.save()
-        : print("error");
+  Future<void> submitForm() async {
+    try {
+      if (_formKey.currentState!.validate()) {
+        setState(() {
+          _isLoading = true;
+        });
+        _formKey.currentState?.save();
+        await Provider.of<CityProvider>(context, listen: false).addActivity(_newActivity);
+        Navigator.pop(context);
+      }
+    } catch (e) {
+      setState(() {
+        _isLoading = false;
+      });
+      print(e);
+    }
   }
 
   @override
@@ -77,6 +92,7 @@ class _AddActivityFormState extends State<AddActivityForm> {
               ),
               SizedBox(height: 20),
               TextFormField(
+                autocorrect: false,
                 focusNode: _urlFocusNode,
                 validator: (value) {
                   return value!.isEmpty ? "remplissez l' Url" : null;
@@ -96,9 +112,11 @@ class _AddActivityFormState extends State<AddActivityForm> {
                     child: Text("Annuler"),
                   ),
                   ElevatedButton(
-                    onPressed: () {
-                      submitForm();
-                    },
+                    onPressed: _isLoading
+                        ? null
+                        : () {
+                            submitForm();
+                          },
                     child: Text("Confirmer"),
                   ),
                 ],

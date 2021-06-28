@@ -46,21 +46,26 @@ class CityProvider with ChangeNotifier {
 
   Future<void> addActivity(Activity newActivity) async {
     try {
-      City cityId = getCityByName(newActivity.city);
+      String cityId = getCityByName(newActivity.city).id!;
       http.Response response = await http.post(
-        Uri.parse('$serverUrl/api/city/${city.id}'),
-        headers: {"Content-type": "application/json"},
+        Uri.parse('$serverUrl/api/city/$cityId/activity'),
+        headers: {'Content-type': 'application/json'},
         body: json.encode(
           newActivity.toJson(),
         ),
       );
+      print(response.statusCode);
+      print(response.request);
+      print(response.body);
       if (response.statusCode == 200) {
         int index = cities.indexWhere((city) => city.id == cityId);
         _cities[index] = City.fromJson(
           json.decode(response.body),
         );
+        notifyListeners();
       }
     } catch (e) {
+      print("error !");
       rethrow;
     }
   }
