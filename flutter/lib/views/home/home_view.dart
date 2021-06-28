@@ -36,8 +36,6 @@ class _HomeState extends State<HomeView> {
 
   @override
   Widget build(BuildContext context) {
-    print("build");
-
     CityProvider cityProvider = Provider.of<CityProvider>(context);
     List<City> filteredCities =
         cityProvider.getFilteredCities(searchController.text);

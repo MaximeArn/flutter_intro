@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_chapitre13/widgets/confirmation_modla.dart';
 import '../../providers/city_provider.dart';
 import '../../providers/trip_provider.dart';
 import 'package:provider/provider.dart';
@@ -78,39 +79,7 @@ class _CityState extends State<CityView> {
   void saveTrip(String cityName) async {
     final result = await showDialog(
       context: context,
-      builder: (context) {
-        return SimpleDialog(
-          title: const Text('Voulez vous sauvegarder ?'),
-          contentPadding: const EdgeInsets.all(20),
-          children: <Widget>[
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: <Widget>[
-                ElevatedButton(
-                  child: const Text('annuler'),
-                  onPressed: () {
-                    Navigator.pop(context, 'cancel');
-                  },
-                ),
-                const SizedBox(
-                  width: 20,
-                ),
-                ElevatedButton(
-                  child: const Text(
-                    'sauvegarder',
-                    style: const TextStyle(color: Colors.white),
-                  ),
-                  style: ElevatedButton.styleFrom(
-                      primary: Theme.of(context).primaryColor),
-                  onPressed: () {
-                    Navigator.pop(context, 'save');
-                  },
-                ),
-              ],
-            )
-          ],
-        );
-      },
+      builder: (context) => ConfirmationModal()
     );
     if (mytrip.date == null) {
       showDialog(
