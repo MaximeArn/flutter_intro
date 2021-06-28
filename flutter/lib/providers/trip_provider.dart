@@ -1,7 +1,7 @@
 import 'dart:collection';
 import 'dart:io';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_chapitre13/environment/env.dart';
+import 'package:widgets_tests/environment/env.dart';
 import '../models/activity_model.dart';
 import '../models/trip_model.dart';
 import 'package:http/http.dart' as http;

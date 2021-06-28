@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_chapitre13/widgets/main_drawer.dart';
+import 'package:widgets_tests/widgets/main_drawer.dart';
 
 import 'widgets/add_activity_form.dart';
 

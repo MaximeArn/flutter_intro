@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_chapitre13/models/activity_model.dart';
+import 'package:widgets_tests/models/activity_model.dart';
 
 class AddActivityForm extends StatefulWidget {
   final String cityName;
@@ -11,12 +11,16 @@ class AddActivityForm extends StatefulWidget {
 }
 
 class _AddActivityFormState extends State<AddActivityForm> {
-  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
-  late Activity newActivity;
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  late FocusNode _priceFocusNode;
+  late FocusNode _urlFocusNode;
+  late Activity _newActivity;
 
   @override
   void initState() {
-    newActivity = Activity(
+    _priceFocusNode = FocusNode();
+    _urlFocusNode = FocusNode();
+    _newActivity = Activity(
         name: widget.cityName,
         city: "",
         id: "",
@@ -27,9 +31,16 @@ class _AddActivityFormState extends State<AddActivityForm> {
   }
 
   void submitForm() {
-    formKey.currentState!.validate() == true
-        ? formKey.currentState?.save()
+    _formKey.currentState!.validate() == true
+        ? _formKey.currentState?.save()
         : print("error");
+  }
+
+  @override
+  void dispose() {
+    _priceFocusNode.dispose();
+    _urlFocusNode.dispose();
+    super.dispose();
   }
 
   @override
@@ -37,32 +48,42 @@ class _AddActivityFormState extends State<AddActivityForm> {
     return Container(
       padding: EdgeInsets.all(15),
       child: Form(
-          key: formKey,
+          key: _formKey,
           child: Column(
             children: [
               TextFormField(
+                textInputAction: TextInputAction.next,
                 validator: (value) {
                   return value!.isEmpty ? "remplissez le nom" : null;
                 },
-                decoration: InputDecoration(hintText: "Nom"),
-                onSaved: (value) => newActivity.name = value!,
+                autofocus: true,
+                decoration: InputDecoration(labelText: "Nom"),
+                onSaved: (value) => _newActivity.name = value!,
+                onFieldSubmitted: (_) =>
+                    FocusScope.of(context).requestFocus(_priceFocusNode),
               ),
               SizedBox(height: 20),
               TextFormField(
+                focusNode: _priceFocusNode,
+                textInputAction: TextInputAction.next,
                 validator: (value) {
                   return value!.isEmpty ? "remplissez le prix" : null;
                 },
                 keyboardType: TextInputType.number,
-                decoration: InputDecoration(hintText: "Prix"),
-                onSaved: (value) => newActivity.price = double.parse(value!),
+                decoration: InputDecoration(labelText: "Prix"),
+                onSaved: (value) => _newActivity.price = double.parse(value!),
+                onFieldSubmitted: (_) =>
+                    FocusScope.of(context).requestFocus(_urlFocusNode),
               ),
               SizedBox(height: 20),
               TextFormField(
+                focusNode: _urlFocusNode,
                 validator: (value) {
                   return value!.isEmpty ? "remplissez l' Url" : null;
                 },
-                decoration: InputDecoration(hintText: "Url image"),
-                onSaved: (value) => newActivity.image = value!,
+                decoration: InputDecoration(labelText: "Url image"),
+                onSaved: (value) => _newActivity.image = value!,
+                onFieldSubmitted: (_) => submitForm(),
               ),
               SizedBox(height: 20),
               Row(
