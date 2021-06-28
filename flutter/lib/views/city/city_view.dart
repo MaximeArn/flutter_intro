@@ -78,9 +78,7 @@ class _CityState extends State<CityView> {
 
   void saveTrip(String cityName) async {
     final result = await showDialog(
-      context: context,
-      builder: (context) => ConfirmationModal()
-    );
+        context: context, builder: (context) => ConfirmationModal());
     if (mytrip.date == null) {
       showDialog(
         context: context,
@@ -113,6 +111,13 @@ class _CityState extends State<CityView> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Organisation voyage'),
+        actions: [
+          IconButton(
+              onPressed: () {
+                Navigator.pushNamed(context, '/addTrip');
+              },
+              icon: Icon(Icons.add)),
+        ],
       ),
       drawer: const MainDrawer(),
       body: Container(

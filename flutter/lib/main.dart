@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_chapitre13/views/add_activity/add_activity_view.dart';
 import './providers/city_provider.dart';
 import './providers/trip_provider.dart';
 import './views/trip/trip_view.dart';
@@ -42,7 +43,8 @@ class _DymaTripState extends State<DymaTrip> {
           '/': (_) => HomeView(),
           CityView.routeName: (_) => CityView(),
           TripsView.routeName: (_) => TripsView(),
-          TripView.routeName: (_) => TripView()
+          TripView.routeName: (_) => TripView(),
+          AddActivityView.routeName: (_) => AddActivityView(),
         },
         onUnknownRoute: (_) => MaterialPageRoute(
           builder: (_) => NotFound(),
