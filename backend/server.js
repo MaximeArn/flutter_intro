@@ -64,9 +64,7 @@ app.put("/api/trip", async (req, res) => {
 app.post("/api/city/:cityId/activity", async (req, res) => {
   try {
     const cityId = req.params.cityId;
-    console.log(cityId);
     const activity = req.body;
-    console.log(activity);
     const city = await City.findOneAndUpdate(
       { _id: cityId },
       { $push: { activities: activity } },
@@ -74,7 +72,6 @@ app.post("/api/city/:cityId/activity", async (req, res) => {
         new: true,
       }
     ).exec();
-    console.log(city);
     res.json(city);
   } catch (e) {
     console.log(e);

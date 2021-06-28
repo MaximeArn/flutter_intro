@@ -33,7 +33,6 @@ class Activity {
       'price': price,
       'status': status == ActivityStatus.ongoing ? 0 : 1,
     };
-    print(value);
     if (id != "") value['_id'] = id;
     return value;
   }

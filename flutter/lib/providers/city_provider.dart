@@ -54,9 +54,6 @@ class CityProvider with ChangeNotifier {
           newActivity.toJson(),
         ),
       );
-      print(response.statusCode);
-      print(response.request);
-      print(response.body);
       if (response.statusCode == 200) {
         int index = cities.indexWhere((city) => city.id == cityId);
         _cities[index] = City.fromJson(
