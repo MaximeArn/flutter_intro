@@ -114,7 +114,7 @@ class _CityState extends State<CityView> {
         actions: [
           IconButton(
               onPressed: () {
-                Navigator.pushNamed(context, '/addTrip');
+                Navigator.pushNamed(context, '/addTrip', arguments: cityName);
               },
               icon: Icon(Icons.add)),
         ],

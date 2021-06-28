@@ -8,12 +8,15 @@ class AddActivityView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    String cityName = ModalRoute.of(context)!.settings.arguments as String;
     return Scaffold(
       appBar: AppBar(
         title: Text("ajouter un activité"),
       ),
       drawer: MainDrawer(),
-      body: AddActivityForm(),
+      body: AddActivityForm(
+        cityName: cityName,
+      ),
     );
   }
 }

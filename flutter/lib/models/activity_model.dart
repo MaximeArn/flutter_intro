@@ -26,7 +26,7 @@ class Activity {
             json['status'] == 0 ? ActivityStatus.ongoing : ActivityStatus.done;
 
   Map<String, dynamic> toJson() {
-    return {
+    Map<String, dynamic> value = {
       '_id': id,
       'name': name,
       'image': image,
@@ -34,5 +34,6 @@ class Activity {
       'price': price,
       'status': status == ActivityStatus.ongoing ? 0 : 1,
     };
+    return value;
   }
 }
