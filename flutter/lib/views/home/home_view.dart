@@ -16,6 +16,14 @@ class HomeView extends StatefulWidget {
 }
 
 class _HomeState extends State<HomeView> {
+  TextEditingController searchController = TextEditingController();
+
+  @override
+  void dispose() {
+    searchController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     List<City> cities = Provider.of<CityProvider>(context).cities;
@@ -24,19 +32,43 @@ class _HomeState extends State<HomeView> {
         title: const Text('dymatrip'),
       ),
       drawer: const MainDrawer(),
-      body: Container(
-        padding: const EdgeInsets.all(10),
-        child: cities.length > 0
-            ? RefreshIndicator(
-                onRefresh: Provider.of<CityProvider>(context).fetchData,
-                child: ListView.builder(
-                  itemCount: cities.length,
-                  itemBuilder: (_, index) => CityCard(
-                    city: cities[index],
+      body: Column(
+        children: [
+          Container(
+            margin: EdgeInsets.only(top: 10),
+            padding: EdgeInsets.symmetric(horizontal: 14),
+            child: Row(
+              children: [
+                Expanded(
+                  child: TextField(
+                    controller: searchController,
+                    decoration: InputDecoration(
+                      hintText: "Rechercher une ville",
+                      prefixIcon: Icon(Icons.search),
+                    ),
                   ),
                 ),
-              )
-            : DymaLoader(),
+                IconButton(onPressed: () {}, icon: Icon(Icons.clear)),
+              ],
+            ),
+          ),
+          Expanded(
+            child: Container(
+              padding: const EdgeInsets.all(10),
+              child: cities.length > 0
+                  ? RefreshIndicator(
+                      onRefresh: Provider.of<CityProvider>(context).fetchData,
+                      child: ListView.builder(
+                        itemCount: cities.length,
+                        itemBuilder: (_, index) => CityCard(
+                          city: cities[index],
+                        ),
+                      ),
+                    )
+                  : DymaLoader(),
+            ),
+          ),
+        ],
       ),
     );
   }
